@@ -16,6 +16,6 @@ namespace EduHome.Core.Entities
         [NotMapped]
         public IFormFile? FormFile { get; set; }
         public int CourseCategoryId { get; set; }   
-        public CourseCategory CourseCategory { get; set; }
+        public CourseCategory? CourseCategory { get; set; }
     }
 }
