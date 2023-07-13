@@ -20,6 +20,7 @@ namespace EduHome.App.Controllers
             HomeViewModel homeViewModel = new HomeViewModel();
 
             homeViewModel.Abouts = await _context.Abouts.Where(x => !x.IsDeleted).ToListAsync();
+            homeViewModel.Sliders = await _context.Slides.Where(x => !x.IsDeleted).ToListAsync();
             return View(homeViewModel);
         }
 

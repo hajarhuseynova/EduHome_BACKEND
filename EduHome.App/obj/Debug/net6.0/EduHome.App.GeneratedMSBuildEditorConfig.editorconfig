@@ -8,53 +8,65 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EduHome.App
 build_property.RootNamespace = EduHome.App
-build_property.ProjectDir = C:\Users\99455\Desktop\EduHome.App\
+build_property.ProjectDir = C:\Users\99455\Desktop\Backend-FINAL\EduHome.App\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\99455\Desktop\EduHome.App
+build_property.MSBuildProjectDirectory = C:\Users\99455\Desktop\Backend-FINAL\EduHome.App
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/99455/Desktop/EduHome.App/areas/Admin/Views/About/Create.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/About/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcQWJvdXRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/areas/Admin/Views/About/Index.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/About/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcQWJvdXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/areas/Admin/Views/About/Update.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/About/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcQWJvdXRcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/areas/Admin/Views/Home/Index.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/areas/Admin/Views/Shared/_Layout.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/Slider/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/Slider/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/Slider/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/areas/Admin/Views/_ViewStart.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/Views/Home/Index.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/Views/_ViewImports.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/Views/_ViewStart.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/99455/Desktop/EduHome.App/Views/Shared/_Layout.cshtml]
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-jm30pd4j8e

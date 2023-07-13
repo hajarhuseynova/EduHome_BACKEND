@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zosFMR1NFBED7NDnFokjUJgRkq6M91qxrBvEdsNbrDWGucTw0JR+8BgGTiSWxQow9FxdigC2VOrYpuy1utfjpg==",
+  "dgSpecHash": "RqfWwkW25D6ZP0PJACpqW7r62bQoEeplLdcQp4/sQbKWAPpIHYTngpdrUi7D2CvS7DL6BHn0qT0gINng9QLNeg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\99455\\Desktop\\EduHome.App\\EduHome.App.csproj",
+  "projectFilePath": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\EduHome.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\99455\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\99455\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
