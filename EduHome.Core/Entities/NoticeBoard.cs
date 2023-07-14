@@ -9,6 +9,6 @@ namespace EduHome.Core.Entities
     public class NoticeBoard:BaseModel
     {
         public string Description { get; set; } 
-        public string VideoLink { get; set; }   
+     
     }
 }

@@ -19,13 +19,15 @@ namespace EduHome.App.Controllers
         {
             HomeViewModel homeViewModel = new HomeViewModel();
 
-            homeViewModel.Abouts = await _context.Abouts.Where(x => !x.IsDeleted).ToListAsync();
+           
             homeViewModel.Sliders = await _context.Slides.Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.CourseCategories = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.PositionCategories = await _context.PositionCategories.Where(x => !x.IsDeleted).ToListAsync();
 
 
             homeViewModel.NoticeBoards = await _context.NoticeBoards.Where(x => !x.IsDeleted).ToListAsync();
+            homeViewModel.Blogs = await _context.Blogs.Where(x => !x.IsDeleted).ToListAsync();
+
 
             homeViewModel.Testinomials = await _context.Testinomials.Include(x =>x.CourseCategory).Include(x=>x.PositionCategory)
               .Where(x => !x.IsDeleted).ToListAsync();

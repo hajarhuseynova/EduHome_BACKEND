@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Link:</th>
+             
                 <th scope="col">Time:</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
@@ -15,7 +15,7 @@
             {
                     <tr>
                         <th scope="row">@item.Id</th>
-                        <th>@item.VideoLink</th>
+                  
                          <th>@item.CreatedDate.ToString("MM:dd:yyyy")</th>
                         <td><a asp-controller="noticeboard" asp-action="update" asp-route-id="@item.Id" >
                             <i class="fas fa-edit text text-primary"></i></a></td>

@@ -74,7 +74,7 @@ namespace EduHome.App.areas.Admin.Controllers
             }
             UpdatedNoticeBoard.Description = noticeBoard.Description;
           
-            UpdatedNoticeBoard.VideoLink = noticeBoard.VideoLink;
+         
             UpdatedNoticeBoard.UpdatedDate = DateTime.Now;
 
             await _context.SaveChangesAsync();

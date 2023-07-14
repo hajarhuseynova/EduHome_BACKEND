@@ -5,8 +5,9 @@ namespace EduHome.App.Context
 {
     public class EduHomeDbContext:DbContext
     {
-        public DbSet<About> Abouts { get; set; }
         public DbSet<Slider> Slides { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+
         public DbSet<Course> Courses { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherPositionCat> TeacherPositionCats { get; set; }

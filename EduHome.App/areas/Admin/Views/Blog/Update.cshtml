@@ -1,0 +1,35 @@
+﻿@model Blog
+<div class="container">
+	<form method="post" enctype="multipart/form-data">
+	<div class="form-group">
+		    <label asp-for="@Model.Name" >Name:</label>
+			<input type="text" class="form-control" asp-for="@Model.Name"/>
+			<span class="text text-danger" asp-validation-for="@Model.Name"></span>
+	</div>
+	<div class="form-group">
+		    <label asp-for="@Model.Desc" >Desc:</label>
+			<input type="text" class="form-control" asp-for="@Model.Desc"/>	
+			<span class="text text-danger" asp-validation-for="@Model.Desc"></span>
+    </div>
+	
+		<div class="form-group">
+		    <label asp-for="@Model.Link" >Link:</label>
+			<input type="text" class="form-control" asp-for="@Model.Link"/>
+			<span class="text text-danger" asp-validation-for="@Model.Link"></span>
+	    	
+    </div>
+		<div class="form-group">
+		    <label asp-for="@Model.Icon" >Icon:</label>
+			<input type="text" class="form-control" asp-for="@Model.Icon"/>
+			<span class="text text-danger" asp-validation-for="@Model.Icon"></span>
+	    	
+    </div>
+	<div class="form-group">
+		    <label asp-for="@Model.FormFile" >File:</label>
+			<input type="file" class="form-control" asp-for="@Model.FormFile"/>
+			<span class="text text-danger" asp-validation-for="@Model.FormFile"></span>
+    </div>
+			@Html.AntiForgeryToken()
+	<button type="submit" class="btn btn-info">Create</button>
+	</form>
+</div>

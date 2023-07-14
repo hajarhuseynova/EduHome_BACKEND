@@ -1,25 +1,27 @@
-﻿@model About
+﻿@model Blog
 <div class="container">
 	<form method="post" enctype="multipart/form-data">
 	<div class="form-group">
-		    <label asp-for="@Model.Title" >Title:</label>
-			<input type="text" class="form-control" asp-for="@Model.Title"/>
-			<span class="text text-danger" asp-validation-for="@Model.Title"></span>
+		    <label asp-for="@Model.Name" >Name:</label>
+			<input type="text" class="form-control" asp-for="@Model.Name"/>
+			<span class="text text-danger" asp-validation-for="@Model.Name"></span>
 	</div>
 	<div class="form-group">
-		    <label asp-for="@Model.Description" >Desc:</label>
-			<input type="text" class="form-control" asp-for="@Model.Description"/>	
-			<span class="text text-danger" asp-validation-for="@Model.Description"></span>
+		    <label asp-for="@Model.Desc" >Desc:</label>
+			<input type="text" class="form-control" asp-for="@Model.Desc"/>	
+			<span class="text text-danger" asp-validation-for="@Model.Desc"></span>
     </div>
-		<div class="form-group">
-		    <label asp-for="@Model.DescriptionResponsive" >Desc Respobsive:</label>
-			<input type="text" class="form-control" asp-for="@Model.DescriptionResponsive"/>
-			<span class="text text-danger" asp-validation-for="@Model.DescriptionResponsive"></span>
-    </div>
+	
 		<div class="form-group">
 		    <label asp-for="@Model.Link" >Link:</label>
 			<input type="text" class="form-control" asp-for="@Model.Link"/>
 			<span class="text text-danger" asp-validation-for="@Model.Link"></span>
+	    	
+    </div>
+		<div class="form-group">
+		    <label asp-for="@Model.Icon" >Icon:</label>
+			<input type="text" class="form-control" asp-for="@Model.Icon"/>
+			<span class="text text-danger" asp-validation-for="@Model.Icon"></span>
 	    	
     </div>
 	<div class="form-group">

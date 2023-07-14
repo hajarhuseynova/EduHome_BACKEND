@@ -7,25 +7,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class AboutController : Controller
+        [Area("Admin")]
+    public class BlogController : Controller
     {
-        private readonly EduHomeDbContext _context;
-        private readonly IWebHostEnvironment _environment;
+       
+            private readonly EduHomeDbContext _context;
+            private readonly IWebHostEnvironment _environment;
 
-        public AboutController(EduHomeDbContext context, IWebHostEnvironment environment)
-        {
-            _context = context;
-            _environment = environment;
+            public BlogController(EduHomeDbContext context, IWebHostEnvironment environment)
+            {
+                _context = context;
+                _environment = environment;
 
-        }
-
+            }
         public async Task<IActionResult> Index()
         {
-            IEnumerable<About> abouts = await _context.Abouts.Where(x => !x.IsDeleted).ToListAsync();
-            return View(abouts);
+            IEnumerable<Blog> Blogs = await _context.Blogs.
+                Where(x => !x.IsDeleted).ToListAsync();
+            return View(Blogs);
         }
-
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -34,7 +34,8 @@ namespace EduHome.App.areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(About about)
+
+        public async Task<IActionResult> Create(Blog blog)
         {
 
             if (!ModelState.IsValid)
@@ -42,84 +43,87 @@ namespace EduHome.App.areas.Admin.Controllers
                 return View();
             }
 
-            if (about.FormFile == null)
+            if (blog.FormFile == null)
             {
                 ModelState.AddModelError("FormFile", "Wrong!");
                 return View();
             }
 
 
-            if (!Helper.isImage(about.FormFile))
+            if (!Helper.isImage(blog.FormFile))
             {
                 ModelState.AddModelError("FormFile", "Wronggg!");
                 return View();
             }
-            if (!Helper.isSizeOk(about.FormFile, 1))
+            if (!Helper.isSizeOk(blog.FormFile, 1))
             {
                 ModelState.AddModelError("FormFile", "Wronggg!");
                 return View();
             }
 
-            about.Image = about.FormFile.CreateImage(_environment.WebRootPath, "assets/img/");
-            about.CreatedDate = DateTime.Now;
-            await _context.AddAsync(about);
+            blog.Image = blog.FormFile.CreateImage(_environment.WebRootPath, "assets/img/");
+            blog.CreatedDate = DateTime.Now;
+            await _context.AddAsync(blog);
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("index", "about");
+            return RedirectToAction("index", "blog");
 
         }
+
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            About? about = await _context.Abouts.
+            Blog? blog = await _context.Blogs.
                   Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
-            if (about == null)
+            if (blog == null)
             {
                 return NotFound();
             }
-            return View(about);
+            return View(blog);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, About about)
+        public async Task<IActionResult> Update(int id, Blog blog)
         {
-            About? UpdateAbout= await _context.Abouts.
+            Blog? Update = await _context.Blogs.
                 Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
 
-            if (about == null)
+            if (blog == null)
             {
                 return NotFound();
             }
 
             if (!ModelState.IsValid)
             {
-                return View(UpdateAbout);
+                return View(Update);
             }
 
 
-            if (about.FormFile != null)
+            if (blog.FormFile != null)
             {
-                if (!Helper.isImage(about.FormFile))
+                if (!Helper.isImage(blog.FormFile))
                 {
                     ModelState.AddModelError("FormFile", "Wronggg!");
                     return View();
                 }
-                if (!Helper.isSizeOk(about.FormFile, 1))
+                if (!Helper.isSizeOk(blog.FormFile, 1))
                 {
                     ModelState.AddModelError("FormFile", "Wronggg!");
                     return View();
                 }
-                Helper.RemoveImage(_environment.WebRootPath, "assets/images", UpdateAbout.Image);
-                UpdateAbout.Image = about.FormFile.CreateImage(_environment.WebRootPath, "assets/images");
+                Helper.RemoveImage(_environment.WebRootPath, "assets/images", Update.Image);
+                Update.Image = blog.FormFile.CreateImage(_environment.WebRootPath, "assets/images");
             }
 
 
-            UpdateAbout.Title = about.Title;
-            UpdateAbout.Description = about.Description;
-            UpdateAbout.DescriptionResponsive = about.DescriptionResponsive;
-            UpdateAbout.Link= about.Link;
-            UpdateAbout.UpdatedDate = DateTime.Now;
+            Update.Name = blog.Name;
+            Update.Desc = blog.Desc;
+            Update.MessageCount = blog.MessageCount;
+
+            Update.Icon = blog.Icon;
+            Update.Link = blog.Link;
+            Update.UpdatedDate = DateTime.Now;
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -128,18 +132,21 @@ namespace EduHome.App.areas.Admin.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            About? about = await _context.Abouts.
+            Blog? blog = await _context.Blogs.
                   Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
-            if (about == null)
+            if (blog == null)
             {
                 return NotFound();
             }
-            about.IsDeleted = true;
+            blog.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
 
-
     }
+
+
+
+
 }
