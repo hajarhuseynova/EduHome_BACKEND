@@ -7,6 +7,8 @@ namespace EduHome.App.ViewModels
         public IEnumerable<About> Abouts { get; set; }
         public IEnumerable<Slider> Sliders { get; set; }
         public IEnumerable<Course> Courses { get; set; }
+        public IEnumerable<NoticeBoard> NoticeBoards { get; set; }
+
         public IEnumerable<CourseCategory> CourseCategories { get; set; }
 
 

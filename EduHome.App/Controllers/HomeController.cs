@@ -22,6 +22,9 @@ namespace EduHome.App.Controllers
             homeViewModel.Abouts = await _context.Abouts.Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.Sliders = await _context.Slides.Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.CourseCategories = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
+            homeViewModel.NoticeBoards = await _context.NoticeBoards.Where(x => !x.IsDeleted).ToListAsync();
+
+
 
             homeViewModel.Courses = await _context.Courses.Include(x=>x.CourseCategory)
                 .Where(x => !x.IsDeleted).ToListAsync();

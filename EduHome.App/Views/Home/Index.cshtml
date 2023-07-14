@@ -128,9 +128,13 @@
                             <h3>TAKE A VIDEO TOUR</h3>
                             <div class="notice-video">
                                 <div class="video-icon video-hover">
-                                    <a class="video-popup" href="https://www.youtube.com/watch?v=to6Ghf8UL7o">
+                                   
+                                         @foreach (var item in Model.NoticeBoards.Take(1))
+                                    {
+                                    <a class="video-popup" href="@item.VideoLink">
                                         <i class="zmdi zmdi-play"></i>
                                     </a>
+                                    }
                                 </div>
                             </div>
                         </div> 
@@ -139,30 +143,14 @@
                         <div class="notice-left-wrapper">  
                             <h3>notice board</h3>
                             <div class="notice-left">
-                                <div class="single-notice-left mb-23 pb-20">
-                                    <h4>5, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
+                            @foreach (var item in Model.NoticeBoards)
+                            {
+                                    <div class="single-notice-left mb-23 pb-20">
+                                    <h4>@item.CreatedDate.ToString("MM:dd:yyyy")</h4>
+                                    <p>@item.Description </p>
                                 </div>
-                                <div class="single-notice-left hidden-sm mb-23 pb-20">
-                                    <h4>4, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left pb-70">
-                                    <h4>3, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left mb-23 pb-20">
-                                    <h4>5, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left hidden-sm mb-23 pb-20">
-                                    <h4>4, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left pb-70">
-                                    <h4>3, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
+                            }
+                             
                             </div>
                         </div>    
                     </div>
