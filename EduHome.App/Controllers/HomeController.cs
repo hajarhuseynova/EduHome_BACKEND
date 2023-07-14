@@ -27,7 +27,7 @@ namespace EduHome.App.Controllers
 
             homeViewModel.NoticeBoards = await _context.NoticeBoards.Where(x => !x.IsDeleted).ToListAsync();
 
-            homeViewModel.Testinomials = await _context.Testinomials.Include(x => x.CourseCategory).Include(x=>x.PositionCategory)
+            homeViewModel.Testinomials = await _context.Testinomials.Include(x =>x.CourseCategory).Include(x=>x.PositionCategory)
               .Where(x => !x.IsDeleted).ToListAsync();
 
             homeViewModel.Courses = await _context.Courses.Include(x=>x.CourseCategory)

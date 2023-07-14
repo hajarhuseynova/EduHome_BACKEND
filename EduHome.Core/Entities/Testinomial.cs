@@ -20,5 +20,6 @@ namespace EduHome.Core.Entities
 
         public int PositionCategoryId { get; set; }
         public PositionCategory? PositionCategory { get; set; }
+
     }
 }

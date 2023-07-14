@@ -7,14 +7,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
-        [Area("Admin")]
+    [Area("Admin")]
     public class TestinomialController : Controller
     {
        
-            private readonly EduHomeDbContext _context;
-            private readonly IWebHostEnvironment _environment;
+        private readonly EduHomeDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-            public TestinomialController(EduHomeDbContext context, IWebHostEnvironment environment)
+        public TestinomialController(EduHomeDbContext context, IWebHostEnvironment environment)
             {
                 _context = context;
                 _environment = environment;
@@ -42,7 +42,6 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             ViewBag.CourseCategory = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.PositionCategory = await _context.PositionCategories.Where(x => !x.IsDeleted).ToListAsync();
-
 
             if (!ModelState.IsValid)
             {

@@ -11,6 +11,5 @@ namespace EduHome.Core.Entities
         public string Name { get; set; }
         public List<Testinomial>? Testinomials { get; set; }
 
-
     }
 }
