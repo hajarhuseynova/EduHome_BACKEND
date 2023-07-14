@@ -15,7 +15,7 @@
       <div class="mb-3 mt-3">
             <select asp-for="TeacherPositionCatId" class="form-select" aria-label="Default select example">
                 <option selected>Select Teacher Position</option>
-                @foreach(var item in ViewBag.TeacherPositionCatId)
+                @foreach(var item in ViewBag.TeacherPositionCats)
                 {
                     <option value="@item.Id">@item.Name</option>
 
@@ -23,7 +23,7 @@
             </select>
             <span class="text text-danger"   asp-validation-for="TeacherPositionCatId"></span>
         </div>
-    <button type="submit" class="btn btn-secondary">Submit</button>
+    <button type="submit" class="btn btn-secondary">Update</button>
     @Html.AntiForgeryToken()
 </form>
 </div>

@@ -1,0 +1,26 @@
+﻿using EduHome.App.Context;
+using EduHome.App.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace EduHome.App.Controllers
+{
+    public class TeacherController : Controller
+    {
+        private readonly EduHomeDbContext _context;
+        public TeacherController(EduHomeDbContext context)
+        {
+            _context = context;
+        }
+        public async Task< IActionResult> Index()
+        {
+            HomeViewModel homeViewModel = new HomeViewModel();
+            homeViewModel.Teachers = await _context.Teachers.
+              Include(x => x.teacherPositionCat).Include(x => x.SocialMedias).
+              Where(x => !x.IsDeleted).ToListAsync();
+            homeViewModel.SocialMedias = await _context.SocialMedias.Where(x => !x.IsDeleted).ToListAsync();
+
+            return View(homeViewModel);
+        }
+    }
+}

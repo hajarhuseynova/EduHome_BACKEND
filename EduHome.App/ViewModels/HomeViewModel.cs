@@ -11,6 +11,9 @@ namespace EduHome.App.ViewModels
 
         public IEnumerable<NoticeBoard> NoticeBoards { get; set; }
         public IEnumerable<Testinomial> Testinomials { get; set; }
+        public IEnumerable<Teacher> Teachers { get; set; }
+        public IEnumerable<SocialMedia> SocialMedias { get; set; }
+        public IEnumerable<TeacherPositionCat> TeacherPositionCats { get; set; }
 
         public IEnumerable<PositionCategory> PositionCategories { get; set; }
 
