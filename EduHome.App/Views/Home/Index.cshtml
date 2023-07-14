@@ -243,23 +243,7 @@
             <div class="container">
                 <div class="row">
                     <div class="testimonial-owl owl-theme owl-carousel">
-                     @foreach (var item in Model.Testinomials)
-                     {
-                          <div class="col-md-8 col-md-offset-2 col-sm-12">
-                            <div class="single-testimonial">
-                                <div class="testimonial-info">
-                                    <div class="testimonial-img">
-                                        <img src="~/assets/img/@item.Image" alt="testimonial">
-                                    </div>
-                                    <div class="testimonial-content">
-                                        <p>@item.Desc</p>
-                                        <h4>@item.PersonName</h4>
-                                        <h5>@item.PositionCategory, @item.CourseCategory</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>   
-                     }
+                    @await Html.PartialAsync("_TestinomialPartialView",Model)
                     </div>
                 </div>
             </div>
@@ -277,7 +261,7 @@
                     </div>
                 </div>
                 <div class="row">
-                 @foreach (var item in Model.Blogs.Take(3))
+                     @foreach (var item in Model.Blogs.Take(3))
                  {
                         <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-blog">
@@ -299,7 +283,7 @@
                         </div>
                     </div>
                  }
-                   
+     
                 </div>
             </div>
         </div>

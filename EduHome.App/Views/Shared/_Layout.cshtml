@@ -67,19 +67,19 @@
                                 <div class="main-menu">
                                     <nav>
                                         <ul>
-                                            <li><a href="index.html">Home</a>
+                                            <li><a asp-action="index" asp-controller="home">Home</a>
                                                 <ul>
-                                                    <li><a href="index.html">Home One</a></li>
-                                                    <li><a href="index-2.html">Home Two</a></li>
-                                                    <li><a href="index-3.html">Home Three</a></li>
-                                                    <li><a href="index-4.html">Home Four</a></li>
-                                                    <li><a href="index-5.html">Home Five</a></li>
+                                                    <li><a asp-action="index" asp-controller="home">Home One</a></li>
+                                                    <li><a asp-action="index" asp-controller="home">Home Two</a></li>
+                                                    <li><a asp-action="index" asp-controller="home">Home Three</a></li>
+                                                    <li><a asp-action="index" asp-controller="home">Home Four</a></li>
+                                                    <li><a asp-action="index" asp-controller="home">Home Five</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="course.html">courses</a>
+                                            <li><a asp-action="index" asp-controller="about">About</a></li>
+                                            <li><a asp-action="index" asp-controller="course">courses</a>
                                                 <ul>
-                                                    <li><a href="course.html">courses</a></li>
+                                                    <li><a asp-action="index" asp-controller="course">courses</a></li>
                                                     <li><a href="course-details.html">courses details</a></li>
                                                 </ul>
                                             </li>
@@ -178,7 +178,7 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="single-widget pr-60">
                                 <div class="footer-logo pb-25">
-                                    <a href="index.html"><img src="~/assets/img/logo/footer-logo.png" alt="eduhome"></a>
+                                    <a asp-action="index" asp-controller="home"><img src="~/assets/img/logo/footer-logo.png" alt="eduhome"></a>
                                 </div>
                                 <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and give you a coete account of the system. </p>
                                 <div class="footer-social">
@@ -208,7 +208,7 @@
                                 <h3>useful links</h3>
                                 <ul>
                                     <li><a href="course.html">our courses</a></li>
-                                    <li><a href="about.html">about us</a></li>
+                                    <li><a asp-action="index" asp-controller="about">about us</a></li>
                                     <li><a href="teacher.html">teachers &amp; faculty</a></li>
                                     <li><a href="#">teams &amp; conditions</a></li>
                                     <li><a href="event.html">our events</a></li>

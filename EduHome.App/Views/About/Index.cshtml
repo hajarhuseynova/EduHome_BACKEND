@@ -1,1 +1,40 @@
-﻿
+﻿@model HomeViewModel
+
+ 	<div class="banner-area-wrapper">
+            <div class="banner-area text-center">	
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="banner-content-wrapper">
+                                <div class="banner-content">
+                                    <h2>abouts</h2> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+
+
+
+
+
+        <div class="teacher-area pt-150 pb-105">
+            <div class="container">
+                <div class="row">
+     @await Html.PartialAsync("_TeacherPartialView",Model)
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-area pt-110 pb-105 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="testimonial-owl owl-theme owl-carousel">
+                    @await Html.PartialAsync("_TestinomialPartialView",Model)
+                    </div>
+                </div>
+            </div>
+        </div>
