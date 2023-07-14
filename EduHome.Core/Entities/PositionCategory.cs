@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EduHome.Core.Entities
 {
-    public class CourseCategory:BaseModel
+    public class PositionCategory:BaseModel
     {
-        public string Name { get; set; }    
-        public List<Course>? Courses { get; set; }
+        public string Name { get; set; }
         public List<Testinomial>? Testinomials { get; set; }
+
 
     }
 }

@@ -1,6 +1,4 @@
 ﻿@model HomeViewModel
-
-
         <section id="slider-container" class="slider-area two"> 
             <div class="slider-owl owl-theme owl-carousel"> 
                 <!-- Start Slingle Slide -->
@@ -247,20 +245,23 @@
             <div class="container">
                 <div class="row">
                     <div class="testimonial-owl owl-theme owl-carousel">
-                        <div class="col-md-8 col-md-offset-2 col-sm-12">
+                     @foreach (var item in Model.Testinomials)
+                     {
+                          <div class="col-md-8 col-md-offset-2 col-sm-12">
                             <div class="single-testimonial">
                                 <div class="testimonial-info">
                                     <div class="testimonial-img">
-                                        <img src="~/assets/img/testimonial/testimonial.jpg" alt="testimonial">
+                                        <img src="~/assets/img/@item.Image" alt="testimonial">
                                     </div>
                                     <div class="testimonial-content">
-                                        <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
-                                        <h4>David Morgan</h4>
-                                        <h5>Student, CSE</h5>
+                                        <p>@item.Desc</p>
+                                        <h4>@item.PersonName</h4>
+                                        <h5>@item.PositionCategory, @item.CourseCategory</h5>
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>   
+                     }
                     </div>
                 </div>
             </div>

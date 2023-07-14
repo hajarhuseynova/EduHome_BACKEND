@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uVV8NaRkFblkmGQryZKs93hapzDZt9P6JQ4Ddyjq1Fg=",
+  "Hash": "Be0qAgVKNCO2T4yooH1uvp4xZVqc0YPmgfqsXqXKC7Y=",
   "Source": "EduHome.App",
   "BasePath": "_content/EduHome.App",
   "Mode": "Default",
@@ -2907,6 +2907,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\blog\\blog-img.jpg"
     },
     {
+      "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\c0593677-e767-43a9-8728-0ee5628d7184Screenshot (1).png",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/c0593677-e767-43a9-8728-0ee5628d7184Screenshot (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\c0593677-e767-43a9-8728-0ee5628d7184Screenshot (1).png"
+    },
+    {
       "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\c66012cb-4a46-4fdf-bee9-227d0672d71bScreenshot (1).png",
       "SourceId": "EduHome.App",
       "SourceType": "Discovered",
@@ -2922,6 +2939,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\c66012cb-4a46-4fdf-bee9-227d0672d71bScreenshot (1).png"
+    },
+    {
+      "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\c7670873-bb37-457b-8804-90455a77778bScreenshot (1).png",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/c7670873-bb37-457b-8804-90455a77778bScreenshot (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\c7670873-bb37-457b-8804-90455a77778bScreenshot (1).png"
     },
     {
       "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\choose\\choose.png",
@@ -3230,6 +3264,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\d0a78868-d8be-4be0-a0af-d8d1e8407644Screenshot (25).png"
     },
     {
+      "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\edad13fb-31f8-47c5-a5ff-f0385b9e7c61Screenshot (1).png",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/edad13fb-31f8-47c5-a5ff-f0385b9e7c61Screenshot (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\edad13fb-31f8-47c5-a5ff-f0385b9e7c61Screenshot (1).png"
+    },
+    {
       "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\ede53ab8-7d2a-4c6f-b96e-9d48bc4b90faScreenshot (14).png",
       "SourceId": "EduHome.App",
       "SourceType": "Discovered",
@@ -3500,6 +3551,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\event\\speaker2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\f43ed083-27e6-4639-9799-9c61ecb03ce8Screenshot (7).png",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/f43ed083-27e6-4639-9799-9c61ecb03ce8Screenshot (7).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\f43ed083-27e6-4639-9799-9c61ecb03ce8Screenshot (7).png"
     },
     {
       "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\footer\\footer1.jpg",
