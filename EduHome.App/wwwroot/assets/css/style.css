@@ -973,16 +973,16 @@ textarea {
     position: relative;
     z-index: 1;
 }
-.header-top-right ul li:hover a{
+/*.header-top-right ul li:hover a{
     color: #EC1C23;
-}
+}*/
 .header-area.two .main-menu > ul > li > a {
     color: #303030;
     line-height: 132px;
 }
-.header-area.two .main-menu > ul > li:hover > a {
+/*.header-area.two .main-menu > ul > li:hover > a {
     color: #EC1C23;
-}
+}*/
 /*----------------------------------------*/
 /*  3. Slider CSS
 /*----------------------------------------*/
