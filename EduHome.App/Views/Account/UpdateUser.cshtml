@@ -28,12 +28,26 @@
                                 </div>
                                 <div class="login-form">
                                     <form action="#" method="post">
-                                        <input type="text" name="name" placeholder="Name">
-                                        <input type="text" name="surname" placeholder="Surname">
-                                        <input type="text" name="email" placeholder="Email">
-                                        <input type="text" name="user-name" placeholder="Username">
-                                        <input type="password" name="user-password" placeholder="Password">
-                                        <input type="text" name="confirm-password" placeholder="ConfirmPassword">
+                                           <div class="form-outline flex-fill mb-0">
+                                            <input asp-for="Name" class="form-control" placeholder="Name" />
+                                        </div>
+                                        <span class="text text-danger" asp-validation-for="Name"></span>
+
+                                            <div class="form-outline flex-fill mb-0">
+                                            <input asp-for="Surname" class="form-control" placeholder="Surname" />
+                                        </div>
+                                        <span class="text text-danger" asp-validation-for="Surname"></span>
+                                
+                                           <div class="form-outline flex-fill mb-0">
+                                            <input asp-for="UserName" class="form-control" placeholder="UserName" />
+                                        </div>
+                                        <span class="text text-danger" asp-validation-for="UserName"></span>
+
+
+                                           <div class="form-outline flex-fill mb-0">
+                                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                                        </div>
+                                        <span class="text text-danger" asp-validation-for="Email"></span>
 
                                         <div class="button-box">
                                             <div class="login-toggle-btn">
@@ -41,7 +55,7 @@
                                                 <label for="remember">Remember me</label>
                                                 <a href="#">Forgot Password?</a>
                                             </div>
-                                            <button type="submit" class="default-btn">sign up</button>
+                                            <button type="submit" class="default-btn">Update</button>
                                         </div>
                                     </form>
                                 </div>

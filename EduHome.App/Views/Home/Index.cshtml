@@ -1,4 +1,10 @@
-﻿@model HomeViewModel
+﻿
+@if (!string.IsNullOrWhiteSpace((string)TempData["Register"]))
+{
+    <div style="display:none" id="alert-message">@TempData["Register"]</div>
+}
+
+@model HomeViewModel
 
         <section id="slider-container" class="slider-area two"> 
             <div class="slider-owl owl-theme owl-carousel"> 
