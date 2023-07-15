@@ -1,9 +1,10 @@
 ﻿using EduHome.Core.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.Context
 {
-    public class EduHomeDbContext:DbContext
+    public class EduHomeDbContext: IdentityDbContext<AppUser>
     {
         public DbSet<Slider> Slides { get; set; }
         public DbSet<Blog> Blogs { get; set; }
