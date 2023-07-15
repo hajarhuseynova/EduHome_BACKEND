@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EduHome.App.ViewModels
 {
-    public class UpdateUserViewModel
+    public class UserUpdateViewModel
     {
 
         [Required]

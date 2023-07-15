@@ -122,7 +122,7 @@ namespace EduHome.App.Controllers
             {
                 return NotFound();
             }
-            UpdateUserViewModel userUpdateView = new UpdateUserViewModel
+            UserUpdateViewModel userUpdateView = new UserUpdateViewModel
             {
                 Name = user.UserName,
                 Surname = user.Surname,
@@ -133,7 +133,7 @@ namespace EduHome.App.Controllers
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateUserViewModel model)
+        public async Task<IActionResult> Update(UserUpdateViewModel model)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             if (!ModelState.IsValid)
