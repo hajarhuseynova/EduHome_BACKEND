@@ -40,8 +40,10 @@ namespace EduHome.App.Controllers
             homeViewModel.Testinomials = await _context.Testinomials.Include(x =>x.CourseCategory).Include(x=>x.PositionCategory)
               .Where(x => !x.IsDeleted).ToListAsync();
 
-            homeViewModel.Courses = await _context.Courses.Include(x=>x.CourseCategory).Include(x=>x.CourseTags).ThenInclude(x=>x.Tag)
+            homeViewModel.Courses = await _context.Courses.Include(x=>x.Feature).Include(x=>x.CourseCategory).Include(x=>x.CourseTags).ThenInclude(x=>x.Tag)
                 .Where(x => !x.IsDeleted).ToListAsync();
+
+         
 
             return View(homeViewModel);
         }

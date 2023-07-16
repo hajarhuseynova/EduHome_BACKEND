@@ -177,7 +177,7 @@ namespace EduHome.App.areas.Admin.Controllers
 
             UpdateCourse.UpdatedDate = DateTime.Now;
             UpdateCourse.Info = course.Info;
-         
+            UpdateCourse.Name = course.Name;
             UpdateCourse.CourseCategoryId = course.CourseCategoryId;
 
             await _context.SaveChangesAsync();

@@ -12,6 +12,11 @@
 			<span class="text text-danger" asp-validation-for="@Model.ApplyText"></span>
 	</div>
 		<div class="form-group">
+		    <label asp-for="@Model.Name" >Name:</label>
+			<input type="text" class="form-control" asp-for="@Model.Name"/>
+			<span class="text text-danger" asp-validation-for="@Model.Name"></span>
+	</div>
+		<div class="form-group">
 		    <label asp-for="@Model.AboutText" >AboutText:</label>
 			<input type="text" class="form-control" asp-for="@Model.AboutText"/>
 			<span class="text text-danger" asp-validation-for="@Model.AboutText"></span>

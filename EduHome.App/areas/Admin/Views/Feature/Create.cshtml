@@ -1,0 +1,63 @@
+﻿@model Feature
+<div class="container">
+	<form method="post" enctype="multipart/form-data">
+	<div class="form-group">
+		    <label asp-for="@Model.Duration" >Duration:</label>
+			<input type="text" class="form-control" asp-for="@Model.Duration"/>
+			<span class="text text-danger" asp-validation-for="@Model.Duration"></span>
+	</div>
+	<div class="form-group">
+		    <label asp-for="@Model.ClassDuration" >ClassDuration:</label>
+			<input type="text" class="form-control" asp-for="@Model.ClassDuration"/>
+			<span class="text text-danger" asp-validation-for="@Model.ClassDuration"></span>
+	</div>
+		<div class="form-group">
+		    <label asp-for="@Model.Assesments" >Assesments:</label>
+			<input type="text" class="form-control" asp-for="@Model.Assesments"/>
+			<span class="text text-danger" asp-validation-for="@Model.Assesments"></span>
+	</div>	<div class="form-group">
+		    <label asp-for="@Model.Fee" >Fee:</label>
+			<input type="text" class="form-control" asp-for="@Model.Fee"/>
+			<span class="text text-danger" asp-validation-for="@Model.Fee"></span>
+	</div>	<div class="form-group">
+		    <label asp-for="@Model.Language" >Language:</label>
+			<input type="text" class="form-control" asp-for="@Model.Language"/>
+			<span class="text text-danger" asp-validation-for="@Model.Language"></span>
+	</div>
+	<div class="form-group">
+		    <label asp-for="@Model.SkillLevel" >SkillLevel:</label>
+			<input type="text" class="form-control" asp-for="@Model.SkillLevel"/>
+			<span class="text text-danger" asp-validation-for="@Model.SkillLevel"></span>
+	</div>
+<div class="form-group">
+		    <label asp-for="@Model.StudentCount" >StudentCount:</label>
+			<input type="text" class="form-control" asp-for="@Model.StudentCount"/>
+			<span class="text text-danger" asp-validation-for="@Model.StudentCount"></span>
+	</div>
+	<div class="form-group">
+		    <label asp-for="@Model.StartTime" >StartTime:</label>
+			<input type="text" class="form-control" asp-for="@Model.StartTime"/>
+			<span class="text text-danger" asp-validation-for="@Model.StartTime"></span>
+	</div>
+	     <div class="form-group">
+            <select class="form-select" asp-for="CourseId" aria-label="Disabled select example">
+                <option selected>Choose Course</option>
+                @foreach (var item in ViewBag.Course)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+
+            </select>
+            <span class="alert-danger" asp-validation-for="CourseId"></span>
+        </div>
+
+
+
+	
+
+
+
+			@Html.AntiForgeryToken()
+	<button type="submit" class="btn btn-info">Create</button>
+	</form>
+</div>

@@ -23,12 +23,16 @@ namespace EduHome.App.areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             IEnumerable<Blog> Blogs = await _context.Blogs.
+                   Include(x => x.CourseCategory).
+               
                 Where(x => !x.IsDeleted).ToListAsync();
             return View(Blogs);
         }
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            ViewBag.CourseCategory = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
             return View();
         }
 
@@ -37,7 +41,8 @@ namespace EduHome.App.areas.Admin.Controllers
 
         public async Task<IActionResult> Create(Blog blog)
         {
-
+            ViewBag.CourseCategory = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
             if (!ModelState.IsValid)
             {
                 return View();
@@ -60,7 +65,10 @@ namespace EduHome.App.areas.Admin.Controllers
                 ModelState.AddModelError("FormFile", "Wronggg!");
                 return View();
             }
+  
+            blog.CourseCategory = await _context.CourseCategories.Where(x => x.Id == blog.CourseCategoryId).FirstOrDefaultAsync();
 
+          
             blog.Image = blog.FormFile.CreateImage(_environment.WebRootPath, "assets/img/");
             blog.CreatedDate = DateTime.Now;
             await _context.AddAsync(blog);

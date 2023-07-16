@@ -19,7 +19,6 @@ namespace EduHome.Core.Entities
         public string Assesments { get; set; }
 
         public int CourseId { get; set; }
-        public Course Course { get; set; }  
-
+        public Course? Course { get; set; }
     }
 }

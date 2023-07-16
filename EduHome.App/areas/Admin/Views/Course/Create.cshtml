@@ -7,6 +7,11 @@
 			<span class="text text-danger" asp-validation-for="@Model.Info"></span>
 	</div>
 	<div class="form-group">
+		    <label asp-for="@Model.Name" >Name:</label>
+			<input type="text" class="form-control" asp-for="@Model.Name"/>
+			<span class="text text-danger" asp-validation-for="@Model.Name"></span>
+	</div>
+	<div class="form-group">
 		    <label asp-for="@Model.ApplyText" >ApplyText:</label>
 			<input type="text" class="form-control" asp-for="@Model.ApplyText"/>
 			<span class="text text-danger" asp-validation-for="@Model.ApplyText"></span>

@@ -10,7 +10,7 @@ namespace EduHome.Core.Entities
 {
     public class Course : BaseModel
     {
-
+        public string Name { get; set; }    
         public string AboutText { get; set; }
         public string Certification { get; set; }
         public string ApplyText { get; set; }
@@ -18,7 +18,6 @@ namespace EduHome.Core.Entities
         public string? Image { get; set; }
         public int CourseCategoryId { get; set; }
         public CourseCategory? CourseCategory { get; set; }
-        public int FeatureId { get; set; }
         public Feature? Feature { get; set; }
         public List<CourseTag>? CourseTags { get; set; }
         [NotMapped]
