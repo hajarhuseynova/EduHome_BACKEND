@@ -19,9 +19,9 @@ namespace EduHome.Core.Entities
         [NotMapped]
         public IFormFile? FormFile { get; set; }
 
-        public List<BlogTag> BlogTags { get; set; }
+        public List<BlogTag>? BlogTags { get; set; }
         [NotMapped]
-        public List<int> TagIds { get; set; }
+        public List<int>? TagIds { get; set; }
         public int CourseCategoryId { get; set; }
         public CourseCategory? CourseCategory { get; set; }
 

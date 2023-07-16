@@ -79,6 +79,7 @@ namespace EduHome.App.areas.Admin.Controllers
                 };
                 await _context.CourseTags.AddAsync(courseTag);
             }
+
             course.CourseCategory = await _context.CourseCategories.Where(x => x.Id == course.CourseCategoryId).FirstOrDefaultAsync();
            
            
@@ -109,7 +110,6 @@ namespace EduHome.App.areas.Admin.Controllers
             }
             return View(course);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, Course course)
@@ -134,7 +134,7 @@ namespace EduHome.App.areas.Admin.Controllers
                 return View();
             }
 
-            if (course.FormFile is not null)
+            if (course.FormFile !=null)
             {
                 if (!Helper.isImage(course.FormFile))
                 {
@@ -146,15 +146,9 @@ namespace EduHome.App.areas.Admin.Controllers
                     ModelState.AddModelError("file", "Image size is wrong");
                     return View();
                 }
-                UpdateCourse.Image = course.FormFile.CreateImage(_environment.WebRootPath, "assets/img/");
+                UpdateCourse.Image = course.FormFile.CreateImage(_environment.WebRootPath, "assets/img");
             }
 
-
-            List<CourseTag> RemovableTag = await _context.CourseTags.
-               Where(x => !course.TagIds.Contains(x.TagId))
-               .ToListAsync();
-
-            _context.CourseTags.RemoveRange(RemovableTag);
 
             foreach (var item in course.TagIds)
             {
@@ -174,17 +168,11 @@ namespace EduHome.App.areas.Admin.Controllers
 
             }
 
-
-            UpdateCourse.UpdatedDate = DateTime.Now;
-            UpdateCourse.Info = course.Info;
-            UpdateCourse.Name = course.Name;
-            UpdateCourse.CourseCategoryId = course.CourseCategoryId;
-
+            _context.Courses.Update(course);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 
         }
-
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -200,8 +188,6 @@ namespace EduHome.App.areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-
 
     }
 }

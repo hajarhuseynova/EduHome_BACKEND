@@ -11,10 +11,10 @@ namespace EduHome.App.areas.Admin.Controllers
     public class BlogController : Controller
     {
        
-            private readonly EduHomeDbContext _context;
-            private readonly IWebHostEnvironment _environment;
+        private readonly EduHomeDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-            public BlogController(EduHomeDbContext context, IWebHostEnvironment environment)
+        public BlogController(EduHomeDbContext context, IWebHostEnvironment environment)
             {
                 _context = context;
                 _environment = environment;
@@ -24,7 +24,6 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             IEnumerable<Blog> Blogs = await _context.Blogs.
                    Include(x => x.CourseCategory).
-               
                 Where(x => !x.IsDeleted).ToListAsync();
             return View(Blogs);
         }
@@ -43,18 +42,16 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             ViewBag.CourseCategory = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
+
             if (!ModelState.IsValid)
             {
                 return View();
             }
-
             if (blog.FormFile == null)
             {
                 ModelState.AddModelError("FormFile", "Wrong!");
                 return View();
             }
-
-
             if (!Helper.isImage(blog.FormFile))
             {
                 ModelState.AddModelError("FormFile", "Wronggg!");
@@ -65,7 +62,21 @@ namespace EduHome.App.areas.Admin.Controllers
                 ModelState.AddModelError("FormFile", "Wronggg!");
                 return View();
             }
-  
+            foreach (var item in blog.TagIds)
+            {
+                if (!await _context.Tag.AnyAsync(x => x.Id == item))
+                {
+                    ModelState.AddModelError("", "Wrongg!");
+                    return View(blog);
+                }
+                BlogTag blogTag = new BlogTag
+                {
+                    TagId = item,
+                    Blog = blog,
+                    CreatedDate = DateTime.Now
+                };
+                await _context.BlogTags.AddAsync(blogTag);
+            }
             blog.CourseCategory = await _context.CourseCategories.Where(x => x.Id == blog.CourseCategoryId).FirstOrDefaultAsync();
 
           
@@ -81,8 +92,14 @@ namespace EduHome.App.areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
+            ViewBag.CourseCategory = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
+
             Blog? blog = await _context.Blogs.
-                  Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
+                Where(c => !c.IsDeleted && c.Id == id).Include(x => x.BlogTags).
+                ThenInclude(x => x.Tag).Include(x => x.CourseCategory)
+                .FirstOrDefaultAsync();
+
             if (blog == null)
             {
                 return NotFound();
@@ -94,8 +111,13 @@ namespace EduHome.App.areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, Blog blog)
         {
-            Blog? Update = await _context.Blogs.
-                Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
+            ViewBag.CourseCategory = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
+
+            Blog? Update = await _context.Blogs.AsNoTrackingWithIdentityResolution().
+                Where(c => !c.IsDeleted && c.Id == id).Include(x=>x.BlogTags).
+                ThenInclude(x => x.Tag).Include(x => x.CourseCategory)
+                .FirstOrDefaultAsync();
 
             if (blog == null)
             {
@@ -106,7 +128,6 @@ namespace EduHome.App.areas.Admin.Controllers
             {
                 return View(Update);
             }
-
 
             if (blog.FormFile != null)
             {
@@ -120,18 +141,38 @@ namespace EduHome.App.areas.Admin.Controllers
                     ModelState.AddModelError("FormFile", "Wronggg!");
                     return View();
                 }
-                Helper.RemoveImage(_environment.WebRootPath, "assets/images", Update.Image);
-                Update.Image = blog.FormFile.CreateImage(_environment.WebRootPath, "assets/images");
+              
+                Update.Image = blog.FormFile.CreateImage(_environment.WebRootPath, "assets/img");
+            }
+
+
+            List<BlogTag> RemovableTag = await _context.BlogTags.
+               Where(x => !blog.TagIds.Contains(x.TagId))
+               .ToListAsync();
+
+            _context.BlogTags.RemoveRange(RemovableTag);
+
+            foreach (var item in blog.TagIds)
+            {
+                if (!await _context.Tag.AnyAsync(x => x.Id == item))
+                {
+                    ModelState.AddModelError("", "Wrongg!");
+                    return View(blog);
+                }
+                BlogTag blogTag = new BlogTag
+                {
+                    TagId = item,
+                    Blog = blog,
+                    CreatedDate = DateTime.Now
+                };
             }
 
 
             Update.Name = blog.Name;
             Update.Desc = blog.Desc;
-        
-
             Update.Icon = blog.Icon;
-         
             Update.UpdatedDate = DateTime.Now;
+            _context.Blogs.Update(blog);
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

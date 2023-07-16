@@ -1,7 +1,9 @@
 ﻿
 using EduHome.App.Context;
+using EduHome.App.Services.Interfaces;
 using EduHome.App.ViewModels;
 using EduHome.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -11,9 +13,16 @@ namespace EduHome.App.Controllers
     public class HomeController : Controller
     {
         private readonly EduHomeDbContext _context;
-        public HomeController(EduHomeDbContext context)
+
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signinManager;
+        private readonly IMailService _mailService;
+        public HomeController(EduHomeDbContext context, UserManager<AppUser> userManager = null, SignInManager<AppUser> signinManager = null, IMailService mailService = null)
         {
             _context = context;
+            _userManager = userManager;
+            _signinManager = signinManager;
+            _mailService = mailService;
         }
         public async Task<IActionResult> Index()
         {
@@ -32,7 +41,7 @@ namespace EduHome.App.Controllers
 
 
             homeViewModel.Teachers = await _context.Teachers.
-                Include(x=>x.teacherPositionCat).Include(x=>x.SocialMedias).
+                Include(x=>x.teacherPositionCat).Include(x=>x.SocialMedias).Include(x=>x.Faculty).Include(x=>x.Skills).
                 Where(x => !x.IsDeleted).ToListAsync();
 
            
@@ -48,6 +57,7 @@ namespace EduHome.App.Controllers
             return View(homeViewModel);
         }
 
-     
+
+
     }
 }

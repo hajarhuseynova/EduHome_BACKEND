@@ -11,20 +11,54 @@
 			<input type="text" class="form-control" asp-for="@Model.Desc"/>	
 			<span class="text text-danger" asp-validation-for="@Model.Desc"></span>
     </div>
-	
-	
+	<div class="form-group">
+		    <label asp-for="@Model.Title" >Title:</label>
+			<input type="text" class="form-control" asp-for="@Model.Title"/>
+			<span class="text text-danger" asp-validation-for="@Model.Title"></span>
+	</div>
+
 		<div class="form-group">
 		    <label asp-for="@Model.Icon" >Icon:</label>
 			<input type="text" class="form-control" asp-for="@Model.Icon"/>
 			<span class="text text-danger" asp-validation-for="@Model.Icon"></span>
 	    	
     </div>
+	
+	<div class="form-group">
+            <select asp-for="CourseCategoryId" class="form-select" aria-label="Default select example">
+                <option selected>Select Category</option>
+                @foreach (var item in  ViewBag.CourseCategory)
+                {
+                    <option value="@item.Id">@item.Name</option>
+
+                }
+            </select>
+            <span class="text text-danger" asp-validation-for="CourseCategoryId"></span>
+        </div>
+		<div class="form-group">
+            <select multiple asp-for="TagIds" class="form-select" aria-label="Disabled select example">
+                @foreach (var item in ViewBag.Tag)
+                {
+                    @if (Model.BlogTags.Any(x => x.TagId == item.Id))
+                    {
+                        <option selected value="@item.Id">@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+
+                }
+            </select>
+            <span class="text text-danger" asp-validation-for="TagIds"></span>
+        </div>
 	<div class="form-group">
 		    <label asp-for="@Model.FormFile" >File:</label>
 			<input type="file" class="form-control" asp-for="@Model.FormFile"/>
 			<span class="text text-danger" asp-validation-for="@Model.FormFile"></span>
     </div>
+	  
 			@Html.AntiForgeryToken()
-	<button type="submit" class="btn btn-info">Create</button>
+	<button type="submit" class="btn btn-info">Update</button>
 	</form>
 </div>

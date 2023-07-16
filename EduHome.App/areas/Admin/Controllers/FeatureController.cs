@@ -26,7 +26,7 @@ namespace EduHome.App.areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted&& x.Feature==null).ToListAsync();
 
             return View();
         }
@@ -34,7 +34,7 @@ namespace EduHome.App.areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Feature feature)
         {
-            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted && x.Feature == null).ToListAsync();
 
             if (!ModelState.IsValid)
             {
@@ -63,28 +63,29 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted).ToListAsync();
 
+            Feature? fec = await _context.Feature
+                .Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
+
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            Feature? fec = await _context.Feature.Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
             if (fec == null)
             {
                 return NotFound();
             }
 
-            fec.UpdatedDate = DateTime.Now;
             fec.Duration = feature.Duration;
+            fec.StartTime=feature.StartTime;
+            fec.UpdatedDate = DateTime.Now;
             fec.ClassDuration = feature.ClassDuration;
-            fec.Assesments = feature.Assesments;
-            fec.Fee = feature.Fee;
-            fec.Language = feature.Language;
             fec.StudentCount = feature.StudentCount;
-            fec.Course = feature.Course;
+            fec.Fee = feature.Fee;
             fec.SkillLevel = feature.SkillLevel;
-       
-
-
+            fec.Language = feature.Language;
+            fec.Assesments = feature.Assesments;
+            fec.CourseId = feature.CourseId;
+          
             await _context.SaveChangesAsync();
             return RedirectToAction("index", "feature");
         }

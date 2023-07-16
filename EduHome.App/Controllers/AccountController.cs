@@ -230,8 +230,6 @@ namespace EduHome.App.Controllers
 
         }
 
-        
-
 
         #region CreateRole
         //public async Task<IActionResult> CreateRole()

@@ -44,7 +44,7 @@
                 <option selected>Choose Course</option>
                 @foreach (var item in ViewBag.Course)
                 {
-                    <option value="@item.Id">@item.Course</option>
+                    <option value="@item.Id">@item.Name</option>
                 }
 
             </select>
@@ -52,12 +52,7 @@
         </div>
 
 
-
-	
-
-
-
 			@Html.AntiForgeryToken()
-	<button type="submit" class="btn btn-info">Create</button>
+	<button type="submit" class="btn btn-info">Update</button>
 	</form>
 </div>
