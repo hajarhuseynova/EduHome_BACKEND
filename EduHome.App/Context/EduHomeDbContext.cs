@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.Context
 {
-    public class EduHomeDbContext: IdentityDbContext<AppUser>
+    public class EduHomeDbContext: IdentityDbContext
     {
         public DbSet<Slider> Slides { get; set; }
         public DbSet<Blog> Blogs { get; set; }
@@ -22,7 +22,13 @@ namespace EduHome.App.Context
         public DbSet<NoticeBoard> NoticeBoards { get; set; }
         public DbSet<PositionCategory> PositionCategories { get; set; }
         public DbSet<Testinomial> Testinomials { get; set; }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Course>()
+               .HasOne(e => e.Feature)
+           .WithOne(e => e.Course)
+               .HasForeignKey<Feature>();
+        }
         public EduHomeDbContext(DbContextOptions<EduHomeDbContext> options) : base(options)
         {
 

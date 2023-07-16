@@ -16,17 +16,11 @@ namespace EduHome.Core.Entities
         public string ApplyText { get; set; }
         public string Info { get; set; }
         public string? Image { get; set; }
-    
         public int CourseCategoryId { get; set; }
         public CourseCategory? CourseCategory { get; set; }
-
-        public Feature? Feature { get; set; }
         public int FeatureId { get; set; }
-
-
+        public Feature? Feature { get; set; }
         public List<CourseTag>? CourseTags { get; set; }
-
-
         [NotMapped]
         public List<int> TagIds {get;set;}
         [NotMapped]
