@@ -8,7 +8,12 @@ namespace EduHome.App.Context
     {
         public DbSet<Slider> Slides { get; set; }
         public DbSet<Blog> Blogs { get; set; }
-
+        public DbSet<Faculty> Faculty { get; set; }
+        public DbSet<Feature> Feature { get; set; }
+        public DbSet<Skills> Skills { get; set; }
+        public DbSet<Tag> Tag { get; set; }
+        public DbSet<CourseTag> CourseTags { get; set; }
+        public DbSet<BlogTag> BlogTags { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherPositionCat> TeacherPositionCats { get; set; }

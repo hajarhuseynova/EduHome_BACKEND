@@ -21,7 +21,9 @@ namespace EduHome.App.Controllers
 
            
             homeViewModel.Sliders = await _context.Slides.Where(x => !x.IsDeleted).ToListAsync();
+
             homeViewModel.CourseCategories = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
+
             homeViewModel.PositionCategories = await _context.PositionCategories.Where(x => !x.IsDeleted).ToListAsync();
 
 
@@ -33,12 +35,12 @@ namespace EduHome.App.Controllers
                 Include(x=>x.teacherPositionCat).Include(x=>x.SocialMedias).
                 Where(x => !x.IsDeleted).ToListAsync();
 
-
+           
 
             homeViewModel.Testinomials = await _context.Testinomials.Include(x =>x.CourseCategory).Include(x=>x.PositionCategory)
               .Where(x => !x.IsDeleted).ToListAsync();
 
-            homeViewModel.Courses = await _context.Courses.Include(x=>x.CourseCategory)
+            homeViewModel.Courses = await _context.Courses.Include(x=>x.CourseCategory).Include(x=>x.CourseTags).ThenInclude(x=>x.Tag)
                 .Where(x => !x.IsDeleted).ToListAsync();
 
             return View(homeViewModel);

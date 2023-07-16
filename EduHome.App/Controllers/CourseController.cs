@@ -16,8 +16,8 @@ namespace EduHome.App.Controllers
         {
             HomeViewModel homeViewModel = new HomeViewModel();
             homeViewModel.Courses = await _context.Courses.
-              Include(x => x.CourseCategory).
-              Where(x => !x.IsDeleted).ToListAsync();
+            Include(x => x.CourseCategory).Include(x => x.CourseTags).ThenInclude(x => x.Tag).
+            Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.SocialMedias = await _context.SocialMedias.Where(x => !x.IsDeleted).ToListAsync();
 
             return View(homeViewModel);

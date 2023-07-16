@@ -24,7 +24,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             IEnumerable<Teacher> teachers =
              await _context.Teachers
-             .Include(t => t.SocialMedias).Include(t => t.teacherPositionCat).
+             .Include(t => t.teacherPositionCat).Include(x=>x.Faculty).
              Where(t => !t.IsDeleted).ToListAsync();
             return View(teachers);
         }
@@ -32,6 +32,8 @@ namespace EduHome.App.areas.Admin.Controllers
         public async Task<IActionResult> Create()
         {
             ViewBag.TeacherPositionCats = await _context.TeacherPositionCats.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Faculty = await _context.Faculty.Where(x => !x.IsDeleted).ToListAsync();
+
             return View();
         }
         [HttpPost]
@@ -40,6 +42,8 @@ namespace EduHome.App.areas.Admin.Controllers
         public async Task<IActionResult> Create(Teacher teacher)
         {
             ViewBag.TeacherPositionCats = await _context.TeacherPositionCats.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Faculty = await _context.Faculty.Where(x => !x.IsDeleted).ToListAsync();
+
 
             if (!ModelState.IsValid)
             {
@@ -76,6 +80,8 @@ namespace EduHome.App.areas.Admin.Controllers
 
 
             ViewBag.TeacherPositionCats = await _context.TeacherPositionCats.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Faculty = await _context.Faculty.Where(x => !x.IsDeleted).ToListAsync();
+
 
             if (teacher is null)
             {
@@ -92,8 +98,6 @@ namespace EduHome.App.areas.Admin.Controllers
             Teacher? updatedteacher = await _context.
                 Teachers.Where(t => !t.IsDeleted && t.Id == id).FirstOrDefaultAsync();
 
-
-            ViewBag.TeacherPositionCats = await _context.TeacherPositionCats.Where(x => !x.IsDeleted).ToListAsync();
 
             if (teacher is null)
             {
@@ -122,7 +126,18 @@ namespace EduHome.App.areas.Admin.Controllers
 
             updatedteacher.UpdatedDate = DateTime.Now;
             updatedteacher.FullName = teacher.FullName;
+            updatedteacher.Desc = teacher.Desc;
+            updatedteacher.Degree = teacher.Degree;
+            updatedteacher.Mail = teacher.Mail;
+            updatedteacher.Phone = teacher.Phone;
+            updatedteacher.Faculty = teacher.Faculty;
+            updatedteacher.Skills = teacher.Skills;
+            updatedteacher.Skype = teacher.Skype;
+            updatedteacher.ExperienceTime = teacher.ExperienceTime;
             updatedteacher.TeacherPositionCatId = teacher.TeacherPositionCatId;
+            updatedteacher.SocialMedias = teacher.SocialMedias;
+            updatedteacher.Hobbies = teacher.Hobbies;
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

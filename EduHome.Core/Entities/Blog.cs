@@ -13,12 +13,17 @@ namespace EduHome.Core.Entities
         public string Name { get; set; }    
         public string Icon { get; set; }
         public string Desc { get; set; }
-        public string Link { get; set; }
-        public int?  MessageCount { get; set; }
+        public string Title { get; set; }
+
         public string? Image { get; set; }
         [NotMapped]
         public IFormFile? FormFile { get; set; }
 
+        public List<BlogTag> BlogTags { get; set; }
+        [NotMapped]
+        public List<int> TagIds { get; set; }
+        public int CourseCategoryId { get; set; }
+        public CourseCategory? CourseCategory { get; set; }
 
     }
 }

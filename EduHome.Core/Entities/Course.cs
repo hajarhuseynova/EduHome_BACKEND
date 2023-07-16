@@ -8,14 +8,29 @@ using System.Threading.Tasks;
 
 namespace EduHome.Core.Entities
 {
-    public class Course:BaseModel
+    public class Course : BaseModel
     {
+
+        public string AboutText { get; set; }
+        public string Certification { get; set; }
+        public string ApplyText { get; set; }
         public string Info { get; set; }
-        public string Link { get; set; }    
         public string? Image { get; set; }
+    
+        public int CourseCategoryId { get; set; }
+        public CourseCategory? CourseCategory { get; set; }
+
+        public Feature? Feature { get; set; }
+        public int FeatureId { get; set; }
+
+
+        public List<CourseTag>? CourseTags { get; set; }
+
+
+        [NotMapped]
+        public List<int> TagIds {get;set;}
         [NotMapped]
         public IFormFile? FormFile { get; set; }
-        public int CourseCategoryId { get; set; }   
-        public CourseCategory? CourseCategory { get; set; }
+
     }
 }

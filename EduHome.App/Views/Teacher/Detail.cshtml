@@ -1,5 +1,92 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model TeacherViewModel
+
+<div class="banner-area-wrapper">
+            <div class="banner-area text-center">	
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="banner-content-wrapper">
+                                <div class="banner-content">
+                                    <h2>teachers / details</h2> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+		<!-- Banner Area End -->
+        <!-- Teacher Start -->
+        <div class="teacher-details-area pt-150 pb-60">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model.Teachers)
+                    {
+                        
+                    <div class="col-md-5 col-sm-5 col-xs-12">
+                        <div class="teacher-details-img">
+                            <img src="~/assets/img/@item.Image" alt="teacher">  
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        <div class="teacher-details-content ml-50">
+                            <h2>@item.FullName</h2>
+                            <h5>@item.teacherPositionCat.Name</h5>
+                            <h4>about me</h4>
+                            <p>@item.Desc</p>
+                            <ul>
+                                <li><span>degree: </span>@item.Degree</li>
+                                <li><span>experience: </span>@item.ExperienceTime years experience</li>
+                                <li><span>hobbies: </span>@item.Hobbies</li>
+                                <li><span>faculty: </span>@item.Faculty.Name</li>
+                            </ul>
+                        </div>
+                    </div>
+                    }
+                </div>
+                  @foreach (var item in Model.Teachers)
+                    {
+                <div class="row">
+                    <div class="col-md-3 col-sm-4">
+                        <div class="teacher-contact">
+                            <h4>contact information</h4>
+                            <p><span>mail me : </span>@item.Mail</p>
+                            <p><span>make a call : </span>@item.Phone</p>
+                            <p><span>skype : </span> @item.Skype</p>
+                            <ul>
+                                @foreach (var soc in item.SocialMedias)
+                                {
+                                <li><a href="@soc.Link">@Html.Raw(soc.Icon)</a></li>
+                                    
+                                }
+                           
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-8">
+                        <div class="skill-area">
+                            <h4>skills</h4>
+                        </div>  
+                        <div class="skill-wrapper">     
+                            <div class="row">
+                          @foreach (var skill in item.Skills )
+                          {
+                                   <div class="col-sm-4">
+                                    <div class="skill-bar-item">
+                                        <span>@skill.Name</span>
+                                        <div class="progress">
+                                            <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: 85%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                                <span class="text-top">@skill.Percent %</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                          }
+                           
+                            </div>   
+                        </div>     
+                    </div>
+                </div>
+                }
+            </div>
+        </div>

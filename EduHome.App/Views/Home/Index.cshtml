@@ -113,7 +113,7 @@
                                 <h3><a href="course-details.html">@item.CourseCategory.Name</a></h3>
              
                                 <p>@item.Info</p>
-                                <a class="default-btn" href="@item.Link">read more</a>
+                                <a class="default-btn" href="">read more</a>
                             </div>   
                         </div>
                     </div>
@@ -279,11 +279,11 @@
                             </div>
                             <div class="blog-content">
                                 <div class="blog-top">
-                                 <p>By @item.Name  /  @item.CreatedDate.ToString("MM:dd:yyyy")  /  @Html.Raw(item.Icon) / @item.MessageCount </p>
+                                 <p>By @item.Name  /  @item.CreatedDate.ToString("MM:dd:yyyy")  /  @Html.Raw(item.Icon) / 4 </p>
                                 </div>
                                 <div class="blog-bottom">
                                     <h2><a href="blog-details.html">@item.Desc</a></h2>
-                                    <a href="@item.Link">read more</a>
+                                    <a href="">read more</a>
                                 </div>
                             </div>
                         </div>

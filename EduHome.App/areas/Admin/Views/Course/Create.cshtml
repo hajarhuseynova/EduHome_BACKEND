@@ -6,12 +6,22 @@
 			<input type="text" class="form-control" asp-for="@Model.Info"/>
 			<span class="text text-danger" asp-validation-for="@Model.Info"></span>
 	</div>
+	<div class="form-group">
+		    <label asp-for="@Model.ApplyText" >ApplyText:</label>
+			<input type="text" class="form-control" asp-for="@Model.ApplyText"/>
+			<span class="text text-danger" asp-validation-for="@Model.ApplyText"></span>
+	</div>
 		<div class="form-group">
-		    <label asp-for="@Model.Link" >Link:</label>
-			<input type="text" class="form-control" asp-for="@Model.Link"/>
-			<span class="text text-danger" asp-validation-for="@Model.Link"></span>
-	    	
-    </div>
+		    <label asp-for="@Model.AboutText" >AboutText:</label>
+			<input type="text" class="form-control" asp-for="@Model.AboutText"/>
+			<span class="text text-danger" asp-validation-for="@Model.AboutText"></span>
+	</div>
+		<div class="form-group">
+		    <label asp-for="@Model.Certification" >Certification:</label>
+			<input type="text" class="form-control" asp-for="@Model.Certification"/>
+			<span class="text text-danger" asp-validation-for="@Model.Certification"></span>
+	</div>
+
 	<div class="form-group">
             <select asp-for="CourseCategoryId" class="form-select" aria-label="Default select example">
                 <option selected>Select Category</option>
@@ -23,13 +33,23 @@
             </select>
             <span class="text text-danger" asp-validation-for="CourseCategoryId"></span>
         </div>
+		<div class="form-group">
+            <select multiple asp-for="TagIds" class="form-select" aria-label="Default select example">
+                <option  selected>Select Category</option>
+                @foreach (var item in  ViewBag.Tag)
+                {
+                    <option value="@item.Id">@item.Name</option>
+
+                }
+            </select>
+            <span class="text text-danger" asp-validation-for="TagIds"></span>
+        </div>
 
 	<div class="form-group">
 		    <label asp-for="@Model.FormFile" >File:</label>
 			<input type="file" class="form-control" asp-for="@Model.FormFile"/>
 			<span class="text text-danger" asp-validation-for="@Model.FormFile"></span>
     </div>
-
 			@Html.AntiForgeryToken()
 	<button type="submit" class="btn btn-info">Create</button>
 	</form>

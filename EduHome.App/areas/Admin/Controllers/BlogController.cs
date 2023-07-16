@@ -119,10 +119,10 @@ namespace EduHome.App.areas.Admin.Controllers
 
             Update.Name = blog.Name;
             Update.Desc = blog.Desc;
-            Update.MessageCount = blog.MessageCount;
+        
 
             Update.Icon = blog.Icon;
-            Update.Link = blog.Link;
+         
             Update.UpdatedDate = DateTime.Now;
 
             await _context.SaveChangesAsync();

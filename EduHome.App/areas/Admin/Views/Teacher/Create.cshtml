@@ -13,6 +13,41 @@
             <span class="text text-danger"  asp-validation-for="@Model.File"></span>
     </div>
       <div class="mb-3 mt-3">
+            <label asp-for="@Model.Degree" class="form-label">Degree:</label>
+            <input type="text" class="form-control" asp-for="@Model.Degree">
+            <span class="text text-danger"  asp-validation-for="@Model.Degree"></span>
+    </div>
+        <div class="mb-3 mt-3">
+            <label asp-for="@Model.Desc" class="form-label">Desc:</label>
+            <input type="text" class="form-control" asp-for="@Model.Desc">
+            <span class="text text-danger"  asp-validation-for="@Model.Desc"></span>
+    </div>
+        <div class="mb-3 mt-3">
+            <label asp-for="@Model.Hobbies" class="form-label">Hobbies:</label>
+            <input type="text" class="form-control" asp-for="@Model.Hobbies">
+            <span class="text text-danger"  asp-validation-for="@Model.Hobbies"></span>
+    </div>
+        <div class="mb-3 mt-3">
+            <label asp-for="@Model.ExperienceTime" class="form-label">ExperienceTime:</label>
+            <input type="text" class="form-control" asp-for="@Model.ExperienceTime">
+            <span class="text text-danger"  asp-validation-for="@Model.ExperienceTime"></span>
+    </div>
+            <div class="mb-3 mt-3">
+            <label asp-for="@Model.Phone" class="form-label">Phone:</label>
+            <input type="text" class="form-control" asp-for="@Model.Phone">
+            <span class="text text-danger"  asp-validation-for="@Model.Phone"></span>
+    </div>
+            <div class="mb-3 mt-3">
+            <label asp-for="@Model.Skype" class="form-label">Skype:</label>
+            <input type="text" class="form-control" asp-for="@Model.Skype">
+            <span class="text text-danger"  asp-validation-for="@Model.Skype"></span>
+    </div>
+            <div class="mb-3 mt-3">
+            <label asp-for="@Model.Mail" class="form-label">Mail:</label>
+            <input type="text" class="form-control" asp-for="@Model.Mail">
+            <span class="text text-danger"  asp-validation-for="@Model.Mail"></span>
+    </div>
+      <div class="mb-3 mt-3">
             <select asp-for="TeacherPositionCatId" class="form-select" aria-label="Default select example">
                 <option selected>Select Teacher Position</option>
                 @foreach(var item in ViewBag.TeacherPositionCats)
@@ -22,6 +57,17 @@
                 }
             </select>
             <span class="text text-danger"   asp-validation-for="TeacherPositionCatId"></span>
+        </div>
+           <div class="mb-3 mt-3">
+            <select asp-for="FacultyId" class="form-select" aria-label="Default select example">
+                <option selected>Select Teacher Position</option>
+                @foreach(var item in ViewBag.Faculty)
+                {
+                    <option value="@item.Id">@item.Name</option>
+
+                }
+            </select>
+            <span class="text text-danger"   asp-validation-for="FacultyId"></span>
         </div>
     <button type="submit" class="btn btn-secondary">Submit</button>
     @Html.AntiForgeryToken()
