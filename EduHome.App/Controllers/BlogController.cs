@@ -14,13 +14,39 @@ namespace EduHome.App.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            HomeViewModel homeViewModel = new HomeViewModel();
-            homeViewModel.Blogs = await _context.Blogs.
-            
-              Where(x => !x.IsDeleted).ToListAsync();
-            homeViewModel.SocialMedias = await _context.SocialMedias.Where(x => !x.IsDeleted).ToListAsync();
+            BlogViewModel blogViewModel = new BlogViewModel
+            {
+                Blogs = await _context.Blogs
+                       .Include(x => x.BlogTags)
+                        .ThenInclude(x => x.Tag)
+                       .Include(x => x.CourseCategory)
+                        .Where(x => !x.IsDeleted).ToListAsync(),
+                             Blog = await _context.Blogs
+                       .Include(x => x.BlogTags)
+                        .ThenInclude(x => x.Tag)
+                       .Include(x => x.CourseCategory)
+                        .Where(x => !x.IsDeleted).FirstOrDefaultAsync()
+            };
 
-            return View(homeViewModel);
+            return View(blogViewModel);
+        }
+        public async Task<IActionResult> Detail(int id)
+        {
+            BlogViewModel blogViewModel = new BlogViewModel
+            {
+                Blogs = await _context.Blogs
+                       .Include(x => x.BlogTags)
+                        .ThenInclude(x => x.Tag)
+                       .Include(x => x.CourseCategory)
+                        .Where(x => !x.IsDeleted).ToListAsync(),
+                Blog = await _context.Blogs
+                       .Include(x => x.BlogTags)
+                        .ThenInclude(x => x.Tag)
+                       .Include(x => x.CourseCategory)
+                        .Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync()
+            };
+
+            return View(blogViewModel);
         }
     }
 }

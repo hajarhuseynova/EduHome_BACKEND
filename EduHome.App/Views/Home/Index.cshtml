@@ -102,7 +102,7 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-course">
                             <div class="course-img">
-                                <a href="course-details.html"><img src="~/assets/img/@item.Image" alt="course">
+                                <a asp-action="detail" asp-controller="course" asp-route-id="@item.Id"><img src="~/assets/img/@item.Image" alt="course">
                                     <div class="course-hover">
                                         <i class="fa fa-link"></i>
                                     </div>
@@ -272,7 +272,7 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-blog">
                             <div class="blog-img">
-                                <a href="blog-details.html"><img src="~/assets/img/@item.Image" alt="blog"></a>
+                                <a asp-action="detail" asp-controller="blog" asp-route-id="@item.Id"><img src="~/assets/img/@item.Image" alt="blog"></a>
                                 <div class="blog-hover">
                                     <a href="blog-details.html"><i class="fa fa-link"></i></a>
                                 </div>

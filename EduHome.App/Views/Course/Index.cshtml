@@ -1,4 +1,4 @@
-﻿  @model HomeViewModel
+﻿  @model CourseViewModel
 
 
   	<div class="banner-area-wrapper">
@@ -39,7 +39,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-course mb-70">
                         <div class="course-img">
-                            <a asp-action="detail" asp-controller="course"><img src="~/assets/img/@item.Image" alt="course">
+                            <a asp-action="detail" asp-controller="course"asp-route-id="@item.Id"><img src="~/assets/img/@item.Image" alt="course">
                                 <div class="course-hover">
                                     <i class="fa fa-link"></i>
                                 </div>

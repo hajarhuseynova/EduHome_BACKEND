@@ -14,15 +14,43 @@ namespace EduHome.App.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            HomeViewModel homeViewModel = new HomeViewModel();
+            CourseViewModel courseViewModel = new CourseViewModel
+            {
+                Courses = await _context.Courses
+                       .Include(x => x.Feature)
+                        .Include(x => x.CourseTags).ThenInclude(x=>x.Tag)
+                       .Include(x => x.CourseCategory).Where(x => !x.IsDeleted)
+                       .ToListAsync(),
+                           Course = await _context.Courses
+                       .Include(x => x.Feature)
+                        .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
+                       .Include(x => x.CourseCategory).Where(x => !x.IsDeleted)
+                       .FirstOrDefaultAsync()
 
-            homeViewModel.Courses = await _context.Courses.
-            Include(x => x.CourseCategory).Include(x => x.CourseTags).ThenInclude(x => x.Tag).
-            Where(x => !x.IsDeleted).ToListAsync();
+            };
 
-            homeViewModel.SocialMedias = await _context.SocialMedias.Where(x => !x.IsDeleted).ToListAsync();
+            return View(courseViewModel);
+        }
+        public async Task<IActionResult> Detail(int id)
+        {
+            CourseViewModel courseViewModel = new CourseViewModel
+            {
+                Courses = await _context.Courses
+                       .Include(x => x.Feature)
+                        .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
+                       .Include(x => x.CourseCategory).Where(x => !x.IsDeleted)
+                       .ToListAsync(),
+                Course = await _context.Courses
+                       .Include(x => x.Feature)
+                        .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
+                       .Include(x => x.CourseCategory).Where(x => !x.IsDeleted&&x.Id==id)
+                       .FirstOrDefaultAsync()
 
-            return View(homeViewModel);
+
+
+            };
+
+            return View(courseViewModel);
         }
     }
 }

@@ -19,41 +19,47 @@
  <div class="courses-details-area blog-area pt-150 pb-140">
             <div class="container">
                 <div class="row">
+                   
                     <div class="col-md-8">
                         <div class="courses-details">
                             <div class="courses-details-img">
-                                <img src="img/course/courses-details.jpg" alt="courses-details">
+                                <img src="~/assets/img/@Model.Course.Image"courses-details">
                             </div>
                             <div class="course-details-content">
-                                <h2>CSE ENGINEERING</h2>
-                                <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit asnatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
+                                <h2>@Model.Course.CourseCategory.Name</h2>
+                                <p>@Model.Course.Info </p>
                                 <div class="course-details-left">
                                     <div class="single-course-left">
                                         <h3>about course</h3>
-                                        <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
+                                        <p>@Model.Course.AboutText</p>
                                     </div>
                                     <div class="single-course-left">
                                         <h3>how to apply</h3>
-                                        <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
+                                        <p>@Model.Course.ApplyText</p>
                                     </div>
                                     <div class="single-course-left">
                                         <h3>certification</h3>
-                                        <p class="margin">I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
-                                        <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human</p>
+                                        <p class="margin">@Model.Course.Certification</p>
+                                        <p>@Model.Course.Certification</p>
                                     </div>
                                 </div>
                                 <div class="course-details-right">
                                     <h3>COURSE FEATURES</h3>
+                                 
+                                 
+                                
                                     <ul>
-                                        <li>starts <span>25 june, 2017</span></li>
-                                        <li>duration <span>6 Month</span></li>
-                                        <li>class duration <span>3 hours</span></li>
-                                        <li>skill level <span>all level</span></li>
-                                        <li>language <span>english</span></li>
-                                        <li>students <span>420</span></li>
-                                        <li>assesments <span>self</span></li>
+                                        <li>starts <span>@Model.Course.Feature?.StartTime</span></li>
+                                        <li>duration <span>@Model.Course.Feature?.Duration Month</span></li>
+                                        <li>class duration <span>@Model.Course.Feature?.ClassDuration hours</span></li>
+                                        <li>skill level <span>@Model.Course.Feature?.SkillLevel</span></li>
+                                        <li>language <span>@Model.Course.Feature?.Language</span></li>
+                                        <li>students <span>@Model.Course.Feature?.StudentCount</span></li>
+                                        <li>assesments <span>@Model.Course.Feature?.Assesments</span></li>
                                     </ul>
-                                    <h3 class="red">course fee $789</h3>
+                                   
+                                     <h3 class="red">course fee $@Model.Course.Feature?.Fee</h3>
+                                  
                                 </div>
                             </div>    
                             <div class="reply-area">
@@ -82,6 +88,7 @@
                             </div>
                         </div>
                     </div>
+                
                     <div class="col-md-4">
                         <div class="blog-sidebar right">
                             <div class="single-blog-widget mb-50">
@@ -98,71 +105,51 @@
                             <div class="single-blog-widget mb-50">
                                 <h3>categories</h3>
                                 <ul>
-                                    <li><a href="#">CSS Engineering (10)</a></li>
-                                    <li><a href="#">Political Science (12)</a></li>
-                                    <li><a href="#">Micro Biology (08)</a></li>
-                                    <li><a href="#">HTML5 &amp; CSS3 (15)</a></li>
-                                    <li><a href="#">Web Design (20)</a></li>
-                                    <li><a href="#">PHP (23)</a></li>
+                                    @foreach (var item in Model.Courses)
+                                    {
+                                    <li><a href="@item.Id">@item.CourseCategory.Name</a></li>
+                                    }
+                                  
                                 </ul>
                             </div>
                             <div class="single-blog-widget mb-50">
                                 <div class="single-blog-banner">
-                                    <a href="blog-details.html" id="blog"><img src="img/blog/blog-img.jpg" alt="blog"></a>
+                                    <a href="blog-details.html" id="blog"><img src="~/assets/img/blog/blog-img.jpg" alt="blog"></a>
                                     <h2>best<br> eductaion<br> theme</h2> 
                                 </div>
                             </div>
                             <div class="single-blog-widget mb-50">
                                 <h3>latest post</h3>
-                                <div class="single-post mb-30">
+                           
+                                  @foreach (var item in Model.Courses.Take(3))
+                              {
+                                   <div class="single-post mb-30">
                                     <div class="single-post-img">
-                                        <a href="blog-details.html"><img src="img/post/post1.jpg" alt="post">
+                                        <a asp-action="detail" asp-controller="course" 
+                                        asp-route-id="@item.Id"><img style="width:120px;height:100px" 
+                                        src="~/assets/img/@item.Image" alt="post">
                                             <div class="blog-hover">
                                                 <i class="fa fa-link"></i>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="single-post-content">
-                                        <h4><a href="blog-details.html">English Language Course for you</a></h4>
-                                        <p>By Alex  /  June 20, 2017</p>
+                                        <h4><a href="#">@item.Name</a></h4>
+                                        <p>By @item.Name  /  @item.CreatedDate</p>
                                     </div>
-                                </div>
-                                <div class="single-post mb-30">
-                                    <div class="single-post-img">
-                                        <a href="blog-details.html"><img src="img/post/post2.jpg" alt="post">
-                                            <div class="blog-hover">
-                                                <i class="fa fa-link"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="single-post-content">
-                                        <h4><a href="blog-details.html">Advance Web Design and Develop</a></h4>
-                                        <p>By Alex  /  June 20, 2017</p>
-                                    </div>
-                                </div>
-                                <div class="single-post">
-                                    <div class="single-post-img">
-                                        <a href="blog-details.html"><img src="img/post/post3.jpg" alt="post">
-                                            <div class="blog-hover">
-                                                <i class="fa fa-link"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="single-post-content">
-                                        <h4><a href="blog-details.html">English Language Course for you</a></h4>
-                                        <p>By Alex  /  June 20, 2017</p>
-                                    </div>
-                                </div>
+                                </div> 
+                              }
+                              
+                              
                             </div>
                             <div class="single-blog-widget">
                                 <h3>tags</h3>
                                 <div class="single-tag">
-                                    <a href="blog-details.html" class="mr-10 mb-10">course</a>
-                                    <a href="blog-details.html" class="mr-10 mb-10">education</a>
-                                    <a href="blog-details.html" class="mb-10">teachers</a>
-                                    <a href="blog-details.html" class="mr-10">learning</a>
-                                    <a href="blog-details.html" class="mr-10">university</a>
-                                    <a href="blog-details.html">events</a>
+                                  @foreach (var item in Model.Course.CourseTags)
+                                    {
+                                    <a href="" class="mr-10 mb-10">@item.Tag.Name</a>
+                                    }
+                                   
                                 </div>
                             </div>
                         </div>

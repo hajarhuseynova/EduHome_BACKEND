@@ -98,7 +98,7 @@ namespace EduHome.App.areas.Admin.Controllers
 
 
             Course? course = await _context.Courses.
-                Include(x=>x.Feature)
+                Include(x=>x.Feature).AsNoTrackingWithIdentityResolution()
                .Include(x=>x.CourseTags).ThenInclude(x=>x.Tag).
                 Include(x=>x.CourseCategory).   
                 Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
@@ -119,7 +119,7 @@ namespace EduHome.App.areas.Admin.Controllers
 
 
             Course? UpdateCourse = await _context.Courses.
-                 AsNoTrackingWithIdentityResolution().
+                
                 Include(x => x.CourseTags).ThenInclude(x => x.Tag)
                 .Include(x=>x.CourseCategory).
                 Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
@@ -167,8 +167,13 @@ namespace EduHome.App.areas.Admin.Controllers
                 }
 
             }
+            UpdateCourse.ApplyText=course.ApplyText;
+            UpdateCourse.AboutText=course.AboutText;
+            UpdateCourse.Certification = course.Certification;
+            UpdateCourse.Name=course.Name;
+            UpdateCourse.Info=course.Info;
+            UpdateCourse.UpdatedDate=course.UpdatedDate;    
 
-            _context.Courses.Update(course);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 

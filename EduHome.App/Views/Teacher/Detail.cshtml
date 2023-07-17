@@ -1,4 +1,4 @@
-﻿@model HomeViewModel
+﻿@model TeacherViewModel
 
 <div class="banner-area-wrapper">
             <div class="banner-area text-center">	
@@ -20,41 +20,39 @@
         <div class="teacher-details-area pt-150 pb-60">
             <div class="container">
                 <div class="row">
-                    @foreach (var item in Model.Teachers)
-                    {
+                  
                         
                     <div class="col-md-5 col-sm-5 col-xs-12">
                         <div class="teacher-details-img">
-                            <img src="~/assets/img/@item.Image" alt="teacher">  
+                            <img src="~/assets/img/@Model.Teacher.Image" alt="teacher">  
                         </div>
                     </div>
                     <div class="col-md-7 col-sm-7 col-xs-12">
                         <div class="teacher-details-content ml-50">
-                            <h2>@item.FullName</h2>
-                            <h5>@item.teacherPositionCat.Name</h5>
+                            <h2>@Model.Teacher.FullName</h2>
+                            <h5>@Model.Teacher.teacherPositionCat.Name</h5>
                             <h4>about me</h4>
-                            <p>@item.Desc</p>
+                            <p>@Model.Teacher.Desc</p>
                             <ul>
-                                <li><span>degree: </span>@item.Degree</li>
-                                <li><span>experience: </span>@item.ExperienceTime years experience</li>
-                                <li><span>hobbies: </span>@item.Hobbies</li>
-                                <li><span>faculty: </span>@item.Faculty.Name</li>
+                                <li><span>degree: </span>@Model.Teacher.Degree</li>
+                                <li><span>experience: </span>@Model.Teacher.ExperienceTime years experience</li>
+                                <li><span>hobbies: </span>@Model.Teacher.Hobbies</li>
+                                <li><span>faculty: </span>@Model.Teacher.Faculty.Name</li>
                             </ul>
                         </div>
                     </div>
-                    }
+                    
                 </div>
-                  @foreach (var item in Model.Teachers)
-                    {
+                
                 <div class="row">
                     <div class="col-md-3 col-sm-4">
                         <div class="teacher-contact">
                             <h4>contact information</h4>
-                            <p><span>mail me : </span>@item.Mail</p>
-                            <p><span>make a call : </span>@item.Phone</p>
-                            <p><span>skype : </span> @item.Skype</p>
+                            <p><span>mail me : </span>@Model.Teacher.Mail</p>
+                            <p><span>make a call : </span>@Model.Teacher.Phone</p>
+                            <p><span>skype : </span> @Model.Teacher.Skype</p>
                             <ul>
-                                @foreach (var soc in item.SocialMedias)
+                                @foreach (var soc in Model.Teacher.SocialMedias)
                                 {
                                 <li><a href="@soc.Link">@Html.Raw(soc.Icon)</a></li>
                                     
@@ -69,7 +67,7 @@
                         </div>  
                         <div class="skill-wrapper">     
                             <div class="row">
-                          @foreach (var skill in item.Skills )
+                          @foreach (var skill in Model.Teacher.Skills )
                           {
                                    <div class="col-sm-4">
                                     <div class="skill-bar-item">
@@ -87,6 +85,6 @@
                         </div>     
                     </div>
                 </div>
-                }
+                
             </div>
         </div>

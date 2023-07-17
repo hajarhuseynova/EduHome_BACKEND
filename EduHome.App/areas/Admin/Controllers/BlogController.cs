@@ -114,7 +114,7 @@ namespace EduHome.App.areas.Admin.Controllers
             ViewBag.CourseCategory = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
 
-            Blog? Update = await _context.Blogs.AsNoTrackingWithIdentityResolution().
+            Blog? Update = await _context.Blogs.
                 Where(c => !c.IsDeleted && c.Id == id).Include(x=>x.BlogTags).
                 ThenInclude(x => x.Tag).Include(x => x.CourseCategory)
                 .FirstOrDefaultAsync();
@@ -145,7 +145,6 @@ namespace EduHome.App.areas.Admin.Controllers
                 Update.Image = blog.FormFile.CreateImage(_environment.WebRootPath, "assets/img");
             }
 
-
             List<BlogTag> RemovableTag = await _context.BlogTags.
                Where(x => !blog.TagIds.Contains(x.TagId))
                .ToListAsync();
@@ -166,13 +165,12 @@ namespace EduHome.App.areas.Admin.Controllers
                     CreatedDate = DateTime.Now
                 };
             }
-
-
             Update.Name = blog.Name;
             Update.Desc = blog.Desc;
             Update.Icon = blog.Icon;
+            Update.Title = blog.Title;
             Update.UpdatedDate = DateTime.Now;
-            _context.Blogs.Update(blog);
+           
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

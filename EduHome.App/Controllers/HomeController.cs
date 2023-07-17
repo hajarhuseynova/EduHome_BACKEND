@@ -37,6 +37,7 @@ namespace EduHome.App.Controllers
 
 
             homeViewModel.NoticeBoards = await _context.NoticeBoards.Where(x => !x.IsDeleted).ToListAsync();
+
             homeViewModel.Blogs = await _context.Blogs.Where(x => !x.IsDeleted).ToListAsync();
 
 

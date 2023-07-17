@@ -1,5 +1,6 @@
 ﻿using EduHome.App.Context;
 using EduHome.App.ViewModels;
+using EduHome.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,15 +13,49 @@ namespace EduHome.App.Controllers
         {
             _context = context;
         }
-        public async Task< IActionResult> Index()
-        {
-            HomeViewModel homeViewModel = new HomeViewModel();
-            homeViewModel.Teachers = await _context.Teachers.
-              Include(x => x.teacherPositionCat).Include(x => x.SocialMedias).
-              Where(x => !x.IsDeleted).ToListAsync();
-            homeViewModel.SocialMedias = await _context.SocialMedias.Where(x => !x.IsDeleted).ToListAsync();
 
-            return View(homeViewModel);
+        public async Task<IActionResult> Index()
+        {
+            TeacherViewModel teacherViewModel = new TeacherViewModel
+            {
+                Teachers = await _context.Teachers
+                       .Include(x => x.Skills.Where(x => !x.IsDeleted))
+                        .Include(x => x.SocialMedias)
+                       .Include(x => x.Faculty)
+
+                        .Include(x => x.teacherPositionCat)
+                        .Where(x => !x.IsDeleted).ToListAsync(),
+                Teacher = await _context.Teachers
+                       .Include(x => x.Skills.Where(x => !x.IsDeleted))
+                        .Include(x => x.SocialMedias)
+                       .Include(x => x.Faculty)
+                        .Include(x => x.teacherPositionCat)
+                        .Where(x => !x.IsDeleted).FirstOrDefaultAsync()
+            };
+
+            return View(teacherViewModel);
+        }
+        public async Task<IActionResult> Detail(int id)
+        {
+            TeacherViewModel teacherViewModel = new TeacherViewModel
+            {
+                
+                Teachers = await _context.Teachers
+                       .Include(x => x.Skills.Where(x => !x.IsDeleted))
+                        .Include(x => x.SocialMedias)
+                       .Include(x => x.Faculty)
+                        .Include(x => x.teacherPositionCat)
+                        .Where(x => !x.IsDeleted).ToListAsync(),
+
+                Teacher = await _context.Teachers
+                       .Include(x => x.Skills.Where(x => !x.IsDeleted))
+                        .Include(x => x.SocialMedias)
+                       .Include(x => x.Faculty)
+                        .Include(x => x.teacherPositionCat)
+                        .Where(x => !x.IsDeleted&&x.Id==id).FirstOrDefaultAsync()
+            };
+
+            return View(teacherViewModel);
         }
     }
 }
