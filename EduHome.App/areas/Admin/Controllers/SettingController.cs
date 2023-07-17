@@ -121,7 +121,7 @@ namespace EduHome.App.areas.Admin.Controllers
                 }
                 set.AboutImage = setting.AboutFormFile.CreateImage(_environment.WebRootPath, "assets/img");
             }
-            if (setting.Logo != null)
+            if (setting.LogoFormFile != null)
             {
                 if (!Helper.isImage(setting.LogoFormFile))
                 {
