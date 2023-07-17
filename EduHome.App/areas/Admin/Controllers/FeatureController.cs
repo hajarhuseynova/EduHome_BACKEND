@@ -17,10 +17,13 @@ namespace EduHome.App.areas.Admin.Controllers
             _environment = environment;
 
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1)
         {
+            int TotalCount = _context.Courses.Where(x => !x.IsDeleted).Count();
+            ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
+
             IEnumerable<Feature> features =
-                await _context.Feature.Include(x=>x.Course).Where(c => !c.IsDeleted).ToListAsync();
+                await _context.Feature.Include(x=>x.Course).Where(c => !c.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();
             return View(features);
         }
         [HttpGet]

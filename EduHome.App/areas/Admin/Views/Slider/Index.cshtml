@@ -26,6 +26,18 @@
             }
         </tbody>
     </table>
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @for (int i = 1; i <= ViewBag.TotalPage; i++)
+            {
+
+
+                    <li class="page-item "><a  class=" page-link" asp-controller="slider" asp-action="index" asp-route-page="@i">@i</a></li>
+                
+              
+            }
+        </ul>
+    </nav>
     <div>
         <a asp-controller="slider" asp-action="create" style="display: block; text-decoration: none; color: white; width: 100%; height: 100%" a  > 
             <div style="width:100%; " class="btn btn-outline-success">Create Slider </div></a>
