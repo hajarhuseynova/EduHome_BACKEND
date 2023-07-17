@@ -5,8 +5,11 @@ namespace EduHome.App.ViewModels
     public class BlogViewModel
     {
         public IEnumerable<Blog> Blogs { get; set; }
+        public IEnumerable<BlogTag> BlogTags { get; set; }
         public Blog Blog { get; set; }
        
+
+     
 
 
     }

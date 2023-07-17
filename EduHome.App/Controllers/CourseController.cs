@@ -12,24 +12,35 @@ namespace EduHome.App.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id=null)
         {
-            CourseViewModel courseViewModel = new CourseViewModel
+            if (id==null)
             {
-                Courses = await _context.Courses
-                       .Include(x => x.Feature)
-                        .Include(x => x.CourseTags).ThenInclude(x=>x.Tag)
-                       .Include(x => x.CourseCategory).Where(x => !x.IsDeleted)
-                       .ToListAsync(),
-                           Course = await _context.Courses
-                       .Include(x => x.Feature)
-                        .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
-                       .Include(x => x.CourseCategory).Where(x => !x.IsDeleted)
-                       .FirstOrDefaultAsync()
+                CourseViewModel courseViewModel = new CourseViewModel
+                {
+                    Courses = await _context.Courses
+                    .Include(x => x.Feature)
+                     .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
+                    .Include(x => x.CourseCategory).Where(x => !x.IsDeleted)
+                    .ToListAsync()
+                };
 
-            };
+                return View(courseViewModel);
+            }
+            else
+            {
+                CourseViewModel courseViewModel = new CourseViewModel
+                {
+                    Courses = await _context.Courses
+                   .Include(x => x.Feature)
+                    .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
+                   .Include(x => x.CourseCategory).Where(x => !x.IsDeleted&&x.CourseCategoryId==id)
+                   .ToListAsync(),
+                };
 
-            return View(courseViewModel);
+                return View(courseViewModel);
+
+            }
         }
         public async Task<IActionResult> Detail(int id)
         {

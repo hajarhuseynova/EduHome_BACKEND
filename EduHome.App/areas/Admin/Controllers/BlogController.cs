@@ -170,6 +170,7 @@ namespace EduHome.App.areas.Admin.Controllers
             Update.Icon = blog.Icon;
             Update.Title = blog.Title;
             Update.UpdatedDate = DateTime.Now;
+            Update.CourseCategoryId=blog.CourseCategoryId;  
            
 
             await _context.SaveChangesAsync();

@@ -74,7 +74,8 @@
                                 <ul>
                                     @foreach (var item in Model.Blogs)
                                     {
-                                    <li><a href="#">@item.CourseCategory.Name</a></li>
+                                    <li><a asp-action="index" asp-controller="blog" asp-route-id="@item.CourseCategoryId" >
+                                        @item.CourseCategory.Name</a></li>
                                     }
                                  
                                 </ul>
@@ -109,12 +110,10 @@
                             <div class="single-blog-widget">
                                 <h3>tags</h3>
                                 <div class="single-tag">
-                                    @foreach (var item in Model.Blog.BlogTags)
-                                    {
-                                    <a href="#" class="mr-10 mb-10">@item.Tag.Name</a>
-                                        
-                                    }
-                                 
+                                        @foreach (var item in Model.BlogTags)
+                                        {
+                                             <a href="#" class="mr-10 mb-10">@item.Tag.Name</a>
+                                        }
                                 </div>
                             </div>
                         </div>

@@ -12,24 +12,47 @@ namespace EduHome.App.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id = null)
         {
-            BlogViewModel blogViewModel = new BlogViewModel
+            if (id == null)
             {
-                Blogs = await _context.Blogs
+                BlogViewModel blogViewModel = new BlogViewModel
+                {
+                    Blogs = await _context.Blogs
                        .Include(x => x.BlogTags)
                         .ThenInclude(x => x.Tag)
                        .Include(x => x.CourseCategory)
                         .Where(x => !x.IsDeleted).ToListAsync(),
-                             Blog = await _context.Blogs
+
+                    BlogTags= await _context.BlogTags.Include(x=>x.Tag).Where(b=>!b.IsDeleted).ToListAsync(), 
+                 
+                };
+
+                return View(blogViewModel);
+            }
+            else
+            {
+                BlogViewModel blogViewModel = new BlogViewModel
+                {
+                    Blogs = await _context.Blogs
                        .Include(x => x.BlogTags)
                         .ThenInclude(x => x.Tag)
                        .Include(x => x.CourseCategory)
-                        .Where(x => !x.IsDeleted).FirstOrDefaultAsync()
-            };
+                        .Where(x => !x.IsDeleted && x.CourseCategoryId == id).ToListAsync(),
 
-            return View(blogViewModel);
+
+
+                    BlogTags= await _context.BlogTags.Include(x=>x.Tag).Where(b=>!b.IsDeleted).ToListAsync(),
+
+
+
+                };
+
+                return View(blogViewModel);
+
+            }
         }
+
         public async Task<IActionResult> Detail(int id)
         {
             BlogViewModel blogViewModel = new BlogViewModel

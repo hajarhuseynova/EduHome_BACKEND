@@ -14,8 +14,7 @@
                     </div>
                 </div>
             </div>
-        </div>    
-
+</div>    
  <div class="courses-details-area blog-area pt-150 pb-140">
             <div class="container">
                 <div class="row">
@@ -107,7 +106,8 @@
                                 <ul>
                                     @foreach (var item in Model.Courses)
                                     {
-                                    <li><a href="@item.Id">@item.CourseCategory.Name</a></li>
+                                    <li><a asp-action="index" asp-controller="course" asp-route-id="@item.CourseCategoryId" >
+                                        @item.CourseCategory.Name</a></li>
                                     }
                                   
                                 </ul>
@@ -147,7 +147,7 @@
                                 <div class="single-tag">
                                   @foreach (var item in Model.Course.CourseTags)
                                     {
-                                    <a href="" class="mr-10 mb-10">@item.Tag.Name</a>
+                                    <a class="mr-10 mb-10">@item.Tag.Name</a>
                                     }
                                    
                                 </div>
@@ -156,4 +156,4 @@
                     </div>
                 </div>
             </div>
-        </div>
+</div>

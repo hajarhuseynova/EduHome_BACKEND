@@ -173,6 +173,8 @@ namespace EduHome.App.areas.Admin.Controllers
             UpdateCourse.Name=course.Name;
             UpdateCourse.Info=course.Info;
             UpdateCourse.UpdatedDate=course.UpdatedDate;    
+            UpdateCourse.CourseCategoryId=course.CourseCategoryId;
+
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
