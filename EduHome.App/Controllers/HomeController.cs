@@ -30,6 +30,8 @@ namespace EduHome.App.Controllers
 
            
             homeViewModel.Sliders = await _context.Slides.Where(x => !x.IsDeleted).ToListAsync();
+            homeViewModel.Settings = await _context.Settings.Where(x => !x.IsDeleted).ToListAsync();
+
 
             homeViewModel.CourseCategories = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
 

@@ -66,21 +66,24 @@
         <div class="about-area pb-155">
             <div class="container">
            
-                   <div class="row">
+                 @foreach (var item in Model.Settings)
+                 {
+                      <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="about-content">
-                            <h2>WELCOME TO <span></span></h2>
-                            <p></p>
-                            <p class="hidden-sm"></p>
-                            <a class="default-btn" href="">view courses</a>
+                            <h2>WELCOME TO <span>@item.Title</span></h2>
+                            <p>@item.Desc1</p>
+                            <p class="hidden-sm">@item.Desc2</p>
+                            <a class="default-btn" href="@item.ButtonLink">view courses</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="about-img">
-                            <img src="~/assets/img/" alt="about">
+                            <img src="~/assets/img/@item.AboutImage" alt="about">
                         </div>
                     </div>
-                </div> 
+                </div>  
+                 }
             
             </div>
         </div>
@@ -133,9 +136,13 @@
                             <div class="notice-video">
                                 <div class="video-icon video-hover">
                                  
-                                    <a class="video-popup" href="">
+                                  @foreach (var item in Model.Settings)
+                                  {
+                                        <a class="" href="@item.VideoLink">
                                         <i class="zmdi zmdi-play"></i>
                                     </a>
+                                      
+                                  }
                                     
                                 </div>
                             </div>

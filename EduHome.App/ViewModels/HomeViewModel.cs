@@ -9,6 +9,8 @@ namespace EduHome.App.ViewModels
         public IEnumerable<Contact> Contacts { get; set; }
 
         public IEnumerable<Course> Courses { get; set; }
+        public IEnumerable<Setting> Settings { get; set; }
+
         public IEnumerable<Blog> Blogs { get; set; }
         public IEnumerable<NoticeBoard> NoticeBoards { get; set; }
         public IEnumerable<Testinomial> Testinomials { get; set; }
