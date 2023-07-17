@@ -19,6 +19,8 @@ namespace EduHome.App.Controllers
               Include(x => x.teacherPositionCat).Include(x => x.SocialMedias).
               Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.SocialMedias = await _context.SocialMedias.Where(x => !x.IsDeleted).ToListAsync();
+            homeViewModel.NoticeBoards = await _context.NoticeBoards.Where(x => !x.IsDeleted).ToListAsync();
+
 
             homeViewModel.Testinomials = await _context.Testinomials.Include(x => x.CourseCategory).Include(x => x.PositionCategory)
               .Where(x => !x.IsDeleted).ToListAsync();
