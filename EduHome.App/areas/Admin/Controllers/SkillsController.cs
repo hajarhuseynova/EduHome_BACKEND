@@ -22,7 +22,7 @@ namespace EduHome.App.areas.Admin.Controllers
             }
         public async Task<IActionResult> Index(int page=1)
         {
-            int TotalCount = _context.Courses.Where(x => !x.IsDeleted).Count();
+            int TotalCount = _context.Skills.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
 
             IEnumerable<Skills> skills = await _context.Skills.Include(x=>x.Teacher).

@@ -12,8 +12,10 @@ namespace EduHome.App.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(int? id=null)
+        public async Task<IActionResult> Index(int? id=null,int page=1)
         {
+            int TotalCount = _context.Courses.Where(x => !x.IsDeleted).Count();
+            ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 9);
             if (id==null)
             {
                 CourseViewModel courseViewModel = new CourseViewModel
@@ -21,7 +23,7 @@ namespace EduHome.App.Controllers
                     Courses = await _context.Courses
                     .Include(x => x.Feature)
                      .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
-                    .Include(x => x.CourseCategory).Where(x => !x.IsDeleted)
+                    .Include(x => x.CourseCategory).Where(x => !x.IsDeleted).Skip((page - 1) * 9).Take(9)
                     .ToListAsync()
                 };
 
@@ -34,7 +36,7 @@ namespace EduHome.App.Controllers
                     Courses = await _context.Courses
                    .Include(x => x.Feature)
                     .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
-                   .Include(x => x.CourseCategory).Where(x => !x.IsDeleted&&x.CourseCategoryId==id)
+                   .Include(x => x.CourseCategory).Where(x => !x.IsDeleted&&x.CourseCategoryId==id).Skip((page - 1) * 5).Take(5)
                    .ToListAsync(),
                 };
 

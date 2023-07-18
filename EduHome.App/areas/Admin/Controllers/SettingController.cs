@@ -22,7 +22,7 @@ namespace EduHome.App.areas.Admin.Controllers
             }
             public async Task<IActionResult> Index(int page=1)
              {
-            int TotalCount = _context.Courses.Where(x => !x.IsDeleted).Count();
+            int TotalCount = _context.Settings.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
 
             IEnumerable<Setting> Settings = await _context.Settings.Where(x => !x.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();
@@ -141,6 +141,12 @@ namespace EduHome.App.areas.Admin.Controllers
 
             set.UpdatedDate = DateTime.Now;
             set.Title = setting.Title;
+            set.Phone1 = setting.Phone1;
+            set.Phone2 = setting.Phone2;
+            set.Email1 = setting.Email1;
+            set.Email2 = setting.Email2;
+            set.CityCountry = setting.CityCountry;
+            set.Address = setting.Address;
             set.Desc2 = setting.Desc2;
             set.Desc1 = setting.Desc1;  
             set.VideoLink = setting.VideoLink;

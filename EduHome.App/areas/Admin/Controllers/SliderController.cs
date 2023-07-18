@@ -22,7 +22,7 @@ namespace EduHome.App.areas.Admin.Controllers
 
         public async Task<IActionResult> Index(int page=1)
         {
-            int TotalCount = _context.Courses.Where(x => !x.IsDeleted).Count();
+            int TotalCount = _context.Slides.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
 
             IEnumerable<Slider> sliders = await _context.Slides.Where(x => !x.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();

@@ -1,4 +1,4 @@
-﻿@model ContactViewModel
+﻿@model HomeViewModel
 
 <div class="banner-area-wrapper">
             <div class="banner-area text-center">	
@@ -15,9 +15,7 @@
                 </div>
             </div>
         </div>    
-		<!-- Banner Area End -->
-        <!-- Contact Start -->
-        <div class="map-area">
+   <div class="map-area">
             <!-- google-map-area start -->
             <div class="google-map-area">
                 <!--  Map Section -->
@@ -26,25 +24,47 @@
                 </div>
             </div>
         </div>
+      
         <div class="contact-area pt-150 pb-140"> 
             <div class="container">     
                 <div class="row">
                     <div class="col-md-5 col-sm-5 col-xs-12">
                         <div class="contact-contents text-center">
-                         @foreach (var item in Model.Contacts.Take(3))
-                         {
+                        @foreach (var item in Model.Settings)
+                        {
                                <div class="single-contact mb-65">
                                 <div class="contact-icon">
-                                    <img src="~/assets/img/@item.Image" alt="contact">
+                                    <img src="~/assets/img/contact/contact1.png" alt="contact">
                                 </div>
                                 <div class="contact-add">
                                     <h3>address</h3>
                                     <p>@item.Address</p>
-                                    <p>@item.CityContry</p>
+                                    <p>@item.CityCountry</p>
+                                </div>
+                            </div>
+                            <div class="single-contact mb-65">
+                                <div class="contact-icon">
+                                    <img src="~/assets/img/contact/contact2.png" alt="contact">
+                                </div>
+                                <div class="contact-add">
+                                    <h3>Phone</h3>
+                                     <p>@item.Phone1</p>
+                                    <p>@item.Phone2</p>
+                                    <p>@item.Email1</p>
+                                    <p>@item.Email2</p>
+                                </div>
+                            </div>
+                            <div class="single-contact">
+                                <div class="contact-icon">
+                                    <img src="~/assets/img/contact/contact3.png" alt="contact">
+                                </div>
+                                <div class="contact-add">
+                                    <h3>Email</h3>
+                                   <p>@item.Email1</p>
+                                    <p>@item.Email2</p>
                                 </div>
                             </div> 
-                         }
-                           
+                        }
                         </div>
                     </div>    
                     <div class="col-md-7 col-sm-7 col-xs-12">

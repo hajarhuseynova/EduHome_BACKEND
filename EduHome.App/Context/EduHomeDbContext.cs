@@ -10,8 +10,6 @@ namespace EduHome.App.Context
 
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Setting> Settings { get; set; }
-
-        public DbSet<Contact> Contacts { get; set; }
         public DbSet<Faculty> Faculty { get; set; }
         public DbSet<Feature> Feature { get; set; }
         public DbSet<Skills> Skills { get; set; }

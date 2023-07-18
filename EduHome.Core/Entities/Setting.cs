@@ -11,18 +11,25 @@ namespace EduHome.Core.Entities
     public class Setting:BaseModel
     {
         public string VideoLink { get; set; }
-        public string Desc1 { get; set; }
         public string Title { get; set; }
-
+        public string Desc1 { get; set; }
         public string Desc2 { get; set; }
         public string ButtonLink { get; set; }
         public string? AboutImage { get; set; }
         [NotMapped]
         public IFormFile? AboutFormFile { get; set; }
-
         public string? Logo { get; set; }
         [NotMapped]
         public IFormFile? LogoFormFile { get; set; }
+        public string Address { get; set; }
+        public string CityCountry { get; set; }
+        public string Phone1 { get; set; }
+        public string Phone2 { get; set; }
+        public string Email1 { get; set; }
+        public string Email2 { get; set; }
+
+
+
 
     }
 }

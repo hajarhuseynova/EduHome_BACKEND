@@ -4,8 +4,8 @@ namespace EduHome.App.ViewModels
 {
     public class ContactViewModel
     {
-        public IEnumerable<Contact> Contacts { get; set; }
-
+       
+        public Setting Setting { get; set; }
        
 
      
