@@ -31,6 +31,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcQmxvZ1xVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/CourseCategory/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcQ291cnNlQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -153,6 +157,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/SocialMedia/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcU29jaWFsTWVkaWFcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/Subscribe/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YXJlYXNcQWRtaW5cVmlld3NcU3Vic2NyaWJlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/99455/Desktop/Backend-FINAL/EduHome.App/areas/Admin/Views/Tag/Create.cshtml]

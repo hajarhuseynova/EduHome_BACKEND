@@ -43,15 +43,11 @@ namespace EduHome.App.Controllers
             homeViewModel.Blogs = await _context.Blogs.Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.Settings = await _context.Settings.Where(x => !x.IsDeleted).ToListAsync();
 
-
-
-
-
             homeViewModel.Teachers = await _context.Teachers.
                 Include(x=>x.teacherPositionCat).Include(x=>x.SocialMedias).Include(x=>x.Faculty).Include(x=>x.Skills).
                 Where(x => !x.IsDeleted).ToListAsync();
 
-           
+           homeViewModel.Subscribes= await _context.Subscribes.Where(x => !x.IsDeleted).ToListAsync();  
 
             homeViewModel.Testinomials = await _context.Testinomials.Include(x =>x.CourseCategory).Include(x=>x.PositionCategory)
               .Where(x => !x.IsDeleted).ToListAsync();
@@ -64,7 +60,19 @@ namespace EduHome.App.Controllers
             return View(homeViewModel);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SendEmail(string email)
+        {
+            Subscribe sub = new Subscribe
+            {
+                Email = email,
+              CreatedDate = DateTime.Now
+            };
+            _context.AddAsync(sub);
+            _context.SaveChanges();
+            return RedirectToAction("index", "home");
 
+        }
 
     }
 }

@@ -59,6 +59,7 @@ namespace EduHome.App.Controllers
             await _mailService.Send("hajarih@code.edu.az", appUser.Email, link, "Verify email");
 
             TempData["register"] = "Please,verify your email";
+
             return RedirectToAction("index", "home");
         }
         public async Task<IActionResult> VerifyEmail(string token, string email)
@@ -98,6 +99,7 @@ namespace EduHome.App.Controllers
                 ModelState.AddModelError("", "username or password is incorret");
                 return View();
             }
+            TempData["Login"] = "Loged in!";
             return RedirectToAction("index", "home");
 
         }
@@ -105,6 +107,7 @@ namespace EduHome.App.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signinManager.SignOutAsync();
+            TempData["Login"] = "Loged out!";
 
             return RedirectToAction("index", "home");
         }
@@ -196,6 +199,7 @@ namespace EduHome.App.Controllers
                 protocol: Request.Scheme);
 
             await _mailService.Send("hajarih@code.edu.az", user.Email, link, "Reset password");
+            TempData["Forget"] = "Please,check email for resetting password";
             return RedirectToAction("index", "home");
         }
         [HttpGet]

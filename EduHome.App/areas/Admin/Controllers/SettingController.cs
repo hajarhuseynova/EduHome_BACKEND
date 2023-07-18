@@ -2,12 +2,14 @@
 using EduHome.App.Extentions;
 using EduHome.App.Helpers;
 using EduHome.Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
-        [Area("Admin")]
+    [Area("Manage")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class SettingController : Controller
     {
        

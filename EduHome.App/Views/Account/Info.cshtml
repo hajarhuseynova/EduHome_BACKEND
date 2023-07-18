@@ -1,5 +1,5 @@
 ﻿@model AppUser
-
+<div id="messageInfo" style="display:none">@TempData["Updateduser"]</div>
 
 
 <div class="banner-area-wrapper">
@@ -78,3 +78,9 @@
         </div>
 
 
+   <script>
+    const messageAlert = document.getElementById("messageInfo");
+    if (messageAlert.innerHTML != "") {
+        alert("User updated")
+    }
+</script>

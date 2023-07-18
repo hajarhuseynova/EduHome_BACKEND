@@ -24,7 +24,7 @@ namespace EduHome.App.areas.Admin.Controllers
             _userManager = userManager;
             _signinManager = signinManager;
         }
-        //[Authorize(Roles ="SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> AdminCreate()
         {
             AppUser SuperAdmin = new AppUser
@@ -36,7 +36,7 @@ namespace EduHome.App.areas.Admin.Controllers
                 EmailConfirmed = true
             };
             await _userManager.CreateAsync(SuperAdmin, "Admin123@");
-        
+
             AppUser Admin = new AppUser
             {
                 Name = "Admin",
@@ -51,7 +51,6 @@ namespace EduHome.App.areas.Admin.Controllers
             await _userManager.AddToRoleAsync(Admin, "Admin");
             return Json("ok");
         }
-
         public async Task<IActionResult> Login()
         {
             return View();
@@ -81,6 +80,7 @@ namespace EduHome.App.areas.Admin.Controllers
             }
             return RedirectToAction("index", "home");
         }
+
         [Authorize(Roles = "Admin,SuperAdmin")]
         public async Task<IActionResult> Logout()
         {

@@ -1,8 +1,23 @@
 ﻿
-@if (!string.IsNullOrWhiteSpace((string)TempData["Register"]))
+@if (!string.IsNullOrWhiteSpace((string)TempData["register"]))
 {
-    <div style="display:none" id="alert-message">@TempData["Register"]</div>
+    <div style="display:none" id="message">@TempData["register"]</div>
 }
+
+@if (!string.IsNullOrWhiteSpace((string)TempData["Forget"]))
+{
+    <div style="display:none" id="message">@TempData["Forget"]</div>
+}
+@if (!string.IsNullOrWhiteSpace((string)TempData["Login"]))
+{
+    <div style="display:none" id="message">@TempData["Login"]</div>
+}
+@if (!string.IsNullOrWhiteSpace((string)TempData["Logout"]))
+{
+    <div style="display:none" id="message">@TempData["Logout"]</div>
+}
+
+
 
 @model HomeViewModel
 
@@ -261,4 +276,15 @@
         </div>
         <!-- Blog Area End -->
         <!-- Subscribe Start -->
-   
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const Message = document.getElementById("message");
+    if (Message != undefined) {
+        const message = Message.innerHTML;
+        if (message != "") {
+            Swal.fire(`${message}`)
+        }
+
+    }</script>

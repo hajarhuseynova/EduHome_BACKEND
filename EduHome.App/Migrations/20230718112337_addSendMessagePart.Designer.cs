@@ -4,6 +4,7 @@ using EduHome.App.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.App.Migrations
 {
     [DbContext(typeof(EduHomeDbContext))]
-    partial class EduHomeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230718112337_addSendMessagePart")]
+    partial class addSendMessagePart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -661,32 +663,6 @@ namespace EduHome.App.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("SocialMedias");
-                });
-
-            modelBuilder.Entity("EduHome.Core.Entities.Subscribe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subscribes");
                 });
 
             modelBuilder.Entity("EduHome.Core.Entities.Tag", b =>

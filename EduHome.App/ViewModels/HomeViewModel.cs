@@ -12,6 +12,8 @@ namespace EduHome.App.ViewModels
         public IEnumerable<Setting> Settings { get; set; }
 
         public IEnumerable<Blog> Blogs { get; set; }
+        public IEnumerable<Subscribe> Subscribes { get; set; }
+
         public IEnumerable<NoticeBoard> NoticeBoards { get; set; }
         public IEnumerable<Testinomial> Testinomials { get; set; }
         public IEnumerable<Teacher> Teachers { get; set; }
