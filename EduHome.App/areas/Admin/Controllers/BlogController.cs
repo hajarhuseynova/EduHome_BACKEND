@@ -1,6 +1,7 @@
 ﻿using EduHome.App.Context;
 using EduHome.App.Extentions;
 using EduHome.App.Helpers;
+using EduHome.App.Services.Interfaces;
 using EduHome.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,20 +9,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
-    [Area("Manage")]
-    [Authorize(Roles = "Admin,SuperAdmin")]
+    [Area("")]
+  
     public class BlogController : Controller
     {
        
         private readonly EduHomeDbContext _context;
         private readonly IWebHostEnvironment _environment;
+        private readonly IMailService _mailService;
 
-        public BlogController(EduHomeDbContext context, IWebHostEnvironment environment)
-            {
-                _context = context;
-                _environment = environment;
-
-            }
+        public BlogController(EduHomeDbContext context, IWebHostEnvironment environment, IMailService mailService)
+        {
+            _context = context;
+            _environment = environment;
+            _mailService = mailService;
+        }
         public async Task<IActionResult> Index(int page = 1)
         {
             int TotalCount = _context.Blogs.Where(x => !x.IsDeleted).Count();
@@ -88,8 +90,13 @@ namespace EduHome.App.areas.Admin.Controllers
             blog.Image = blog.FormFile.CreateImage(_environment.WebRootPath, "assets/img/");
             blog.CreatedDate = DateTime.Now;
             await _context.AddAsync(blog);
-
             await _context.SaveChangesAsync();
+
+            var mails=_context.Subscribes.ToList(); 
+            foreach(var mail in mails)
+            {
+                await _mailService.Send("hajarih@code.edu.az", mail.Email, $"localhost:7263/blog/detail/{blog.Id}", "New Blog");
+            }
             return RedirectToAction("index", "blog");
 
         }

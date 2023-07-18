@@ -28,50 +28,36 @@ namespace EduHome.App.Controllers
         {
             HomeViewModel homeViewModel = new HomeViewModel();
 
-           
             homeViewModel.Sliders = await _context.Slides.Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.Settings = await _context.Settings.Where(x => !x.IsDeleted).ToListAsync();
-
-
             homeViewModel.CourseCategories = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
-
             homeViewModel.PositionCategories = await _context.PositionCategories.Where(x => !x.IsDeleted).ToListAsync();
-
-
             homeViewModel.NoticeBoards = await _context.NoticeBoards.Where(x => !x.IsDeleted).ToListAsync();
-
             homeViewModel.Blogs = await _context.Blogs.Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.Settings = await _context.Settings.Where(x => !x.IsDeleted).ToListAsync();
-
             homeViewModel.Teachers = await _context.Teachers.
-                Include(x=>x.teacherPositionCat).Include(x=>x.SocialMedias).Include(x=>x.Faculty).Include(x=>x.Skills).
-                Where(x => !x.IsDeleted).ToListAsync();
-
-           homeViewModel.Subscribes= await _context.Subscribes.Where(x => !x.IsDeleted).ToListAsync();  
-
+            Include(x=>x.teacherPositionCat).Include(x=>x.SocialMedias).Include(x=>x.Faculty).Include(x=>x.Skills).
+            Where(x => !x.IsDeleted).ToListAsync();
+            homeViewModel.Subscribes= await _context.Subscribes.Where(x => !x.IsDeleted).ToListAsync();  
             homeViewModel.Testinomials = await _context.Testinomials.Include(x =>x.CourseCategory).Include(x=>x.PositionCategory)
-              .Where(x => !x.IsDeleted).ToListAsync();
-
+            .Where(x => !x.IsDeleted).ToListAsync();
             homeViewModel.Courses = await _context.Courses.Include(x=>x.Feature).Include(x=>x.CourseCategory).Include(x=>x.CourseTags).ThenInclude(x=>x.Tag)
-                .Where(x => !x.IsDeleted).ToListAsync();
-
-         
+            .Where(x => !x.IsDeleted).ToListAsync();
 
             return View(homeViewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendEmail(string email)
+        public async Task<IActionResult> Subscribe(string email)
         {
             Subscribe sub = new Subscribe
             {
                 Email = email,
               CreatedDate = DateTime.Now
             };
-            _context.AddAsync(sub);
+            _context.Subscribes.AddAsync(sub);
             _context.SaveChanges();
             return RedirectToAction("index", "home");
-
         }
 
     }

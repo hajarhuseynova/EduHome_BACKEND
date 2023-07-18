@@ -23,14 +23,21 @@ namespace EduHome.App.Controllers
 
         public async Task<IActionResult> SendMessage(string name, string subject, string message, string email)
         {
+            if(name==null || subject==null || message==null || email==null)
+            {
+            return RedirectToAction("index", "contact");
+
+            }
             SendMessage mes = new SendMessage
             {
                 Name = name,
                 Email = email,
                 Message = message,
-                Subject = subject
+                Subject = subject,
+                CreatedDate=DateTime.Now
             };
-            _context.Add(mes);
+            _context.SendMessages.Add(mes);
+            _context.SaveChanges();
             return RedirectToAction("index", "contact");
         }
 
