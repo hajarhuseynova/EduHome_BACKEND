@@ -100,28 +100,8 @@
                     </div>
                 </div>
                 <div class="row">
-                 @foreach (var item in Model.Courses.Take(3))
-                 {
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="single-course">
-                            <div class="course-img">
-                                <a asp-action="detail" asp-controller="course" asp-route-id="@item.Id"><img src="~/assets/img/@item.Image" alt="course">
-                                    <div class="course-hover">
-                                        <i class="fa fa-link"></i>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="course-content">
-                               
-                                <h3><a href="course-details.html">@item.CourseCategory.Name</a></h3>
-             
-                                <p>@item.Info</p>
-                                <a class="default-btn" href="">read more</a>
-                            </div>   
-                        </div>
-                    </div>
-                 }
-                   
+               
+                    @await Html.PartialAsync("_CoursePartialView",Model.Courses.Take(3).ToList())
                 </div>
             </div>
         </div>
@@ -274,28 +254,7 @@
                     </div>
                 </div>
                 <div class="row">
-                     @foreach (var item in Model.Blogs.Take(3))
-                 {
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="single-blog">
-                            <div class="blog-img">
-                                <a asp-action="detail" asp-controller="blog" asp-route-id="@item.Id"><img src="~/assets/img/@item.Image" alt="blog"></a>
-                                <div class="blog-hover">
-                                    <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-top">
-                                 <p>By @item.Name  /  @item.CreatedDate.ToString("MM:dd:yyyy")  /  @Html.Raw(item.Icon) / 4 </p>
-                                </div>
-                                <div class="blog-bottom">
-                                    <h2><a href="blog-details.html">@item.Desc</a></h2>
-                                    <a href="">read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                 }
+                @await Html.PartialAsync("_BlogPartialView",Model.Blogs.Take(3).ToList())
      
                 </div>
             </div>
