@@ -143,12 +143,27 @@ namespace EduHome.App.areas.Admin.Controllers
             set.Title = setting.Title;
             set.Phone1 = setting.Phone1;
             set.Phone2 = setting.Phone2;
+
             set.Email1 = setting.Email1;
             set.Email2 = setting.Email2;
+
+            set.Link1 = setting.Link1;
+            set.Link2 = setting.Link2;
+            set.Link3 = setting.Link3;
+            set.Link4 = setting.Link4;
+
+            set.Icon1 = setting.Icon1;
+            set.Icon2 = setting.Icon2;
+            set.Icon3 = setting.Icon3;
+            set.Icon4 = setting.Icon4;
+
+
             set.CityCountry = setting.CityCountry;
             set.Address = setting.Address;
+
             set.Desc2 = setting.Desc2;
             set.Desc1 = setting.Desc1;  
+
             set.VideoLink = setting.VideoLink;
             set.ButtonLink = setting.ButtonLink;
        

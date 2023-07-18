@@ -14,7 +14,7 @@ namespace EduHome.App.Controllers
         }
         public async Task<IActionResult> Index(int? id = null,int page=1)
         {
-            int TotalCount = _context.Courses.Where(x => !x.IsDeleted).Count();
+            int TotalCount = _context.Blogs.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 6);
             if (id == null)
             {
@@ -26,7 +26,8 @@ namespace EduHome.App.Controllers
                        .Include(x => x.CourseCategory)
                         .Where(x => !x.IsDeleted).Skip((page - 1) * 6).Take(6).ToListAsync(),
 
-                    BlogTags= await _context.BlogTags.Include(x=>x.Tag).Where(b=>!b.IsDeleted).ToListAsync(), 
+                    Categories = await _context.CourseCategories.Include(x=>x.Blogs.Where(x => !x.IsDeleted)).Where(b => !b.IsDeleted).ToListAsync(),
+                    Tags = await _context.Tag.Where(b=>!b.IsDeleted).ToListAsync(), 
                  
                 };
 
@@ -42,11 +43,8 @@ namespace EduHome.App.Controllers
                        .Include(x => x.CourseCategory)
                         .Where(x => !x.IsDeleted && x.CourseCategoryId == id).ToListAsync(),
 
-
-
-                    BlogTags= await _context.BlogTags.Include(x=>x.Tag).Where(b=>!b.IsDeleted).ToListAsync(),
-
-
+                    Categories = await _context.CourseCategories.Include(x => x.Blogs.Where(x=>!x.IsDeleted)).Where(b => !b.IsDeleted).ToListAsync(),
+                    Tags = await _context.Tag.Where(b => !b.IsDeleted).ToListAsync(),
 
                 };
 
@@ -68,7 +66,10 @@ namespace EduHome.App.Controllers
                        .Include(x => x.BlogTags)
                         .ThenInclude(x => x.Tag)
                        .Include(x => x.CourseCategory)
-                        .Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync()
+                        .Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync(),
+
+                Categories = await _context.CourseCategories.Include(x => x.Blogs.Where(x => !x.IsDeleted)).Where(b => !b.IsDeleted).ToListAsync(),
+
             };
 
             return View(blogViewModel);

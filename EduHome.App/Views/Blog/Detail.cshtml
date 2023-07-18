@@ -76,10 +76,11 @@
                             </div>
                             <div class="single-blog-widget mb-47">
                                 <h3>categories</h3>
-                                    @foreach (var item in Model.Blogs)
+                                     @foreach (var item in Model.Categories)
                                     {
-                                    <li><a asp-action="index" asp-controller="blog" asp-route-id="@item.CourseCategoryId" >
-                                        @item.CourseCategory.Name</a></li>
+
+                                    <li><a asp-action="index" asp-controller="blog" asp-route-id="@item.Id" >
+                                        @item.Name (@item.Blogs.Count()) </a></li>
                                     }
 
                                  </div>

@@ -7,7 +7,6 @@ namespace EduHome.App.Context
     public class EduHomeDbContext: IdentityDbContext<AppUser>
     {
         public DbSet<Slider> Slides { get; set; }
-
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Faculty> Faculty { get; set; }

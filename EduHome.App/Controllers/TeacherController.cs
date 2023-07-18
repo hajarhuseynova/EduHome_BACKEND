@@ -16,7 +16,7 @@ namespace EduHome.App.Controllers
 
         public async Task<IActionResult> Index(int page =1)
         {
-            int TotalCount = _context.Courses.Where(x => !x.IsDeleted).Count();
+            int TotalCount = _context.Teachers.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 12);
             TeacherViewModel teacherViewModel = new TeacherViewModel
             {
@@ -27,6 +27,7 @@ namespace EduHome.App.Controllers
 
                         .Include(x => x.teacherPositionCat)
                         .Where(x => !x.IsDeleted).Skip((page - 1) * 12).Take(12).ToListAsync(),
+
                 Teacher = await _context.Teachers
                        .Include(x => x.Skills.Where(x => !x.IsDeleted))
                         .Include(x => x.SocialMedias)

@@ -45,8 +45,6 @@
                                 <div class="course-details-right">
                                     <h3>COURSE FEATURES</h3>
                                  
-                                 
-                                
                                     <ul>
                                         <li>starts <span>@Model.Course.Feature?.StartTime</span></li>
                                         <li>duration <span>@Model.Course.Feature?.Duration Month</span></li>
@@ -104,12 +102,15 @@
                             <div class="single-blog-widget mb-50">
                                 <h3>categories</h3>
                                 <ul>
-                                    @foreach (var item in Model.Courses)
-                                    {
-                                    <li><a asp-action="index" asp-controller="course" asp-route-id="@item.CourseCategoryId" >
-                                        @item.CourseCategory.Name</a></li>
-                                    }
-                                  
+
+                                    @foreach (var item in Model.Categories)
+                                 {
+                               <li>
+                               <a asp-action="index" asp-controller="course" asp-route-id="@item.Id" >@item.Name (@item.Courses.Count())</a>
+                               </li>
+                               }
+
+
                                 </ul>
                             </div>
                             <div class="single-blog-widget mb-50">

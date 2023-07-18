@@ -24,7 +24,9 @@ namespace EduHome.App.Controllers
                     .Include(x => x.Feature)
                      .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
                     .Include(x => x.CourseCategory).Where(x => !x.IsDeleted).Skip((page - 1) * 9).Take(9)
-                    .ToListAsync()
+                    .ToListAsync(),
+
+                    Categories = await _context.CourseCategories.Where(b => !b.IsDeleted).ToListAsync(),
                 };
 
                 return View(courseViewModel);
@@ -38,6 +40,8 @@ namespace EduHome.App.Controllers
                     .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
                    .Include(x => x.CourseCategory).Where(x => !x.IsDeleted&&x.CourseCategoryId==id).Skip((page - 1) * 5).Take(5)
                    .ToListAsync(),
+
+                    Categories = await _context.CourseCategories.Where(b => !b.IsDeleted).ToListAsync(),
                 };
 
                 return View(courseViewModel);
@@ -57,8 +61,9 @@ namespace EduHome.App.Controllers
                        .Include(x => x.Feature)
                         .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
                        .Include(x => x.CourseCategory).Where(x => !x.IsDeleted&&x.Id==id)
-                       .FirstOrDefaultAsync()
+                       .FirstOrDefaultAsync(),
 
+                    Categories = await _context.CourseCategories.Where(b => !b.IsDeleted&&b.Courses.Any(d=>!d.IsDeleted)).ToListAsync(),
 
 
             };

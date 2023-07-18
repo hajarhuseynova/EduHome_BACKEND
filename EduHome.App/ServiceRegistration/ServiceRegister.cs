@@ -13,6 +13,10 @@ namespace EduHome.App.ServiceRegistration
         {
             service.AddScoped<IMailService, MailService>();
 
+
+            service.AddScoped<ISettingService, SettingService>();
+
+
             service.AddIdentity<AppUser, IdentityRole>()
                    .AddDefaultTokenProviders()
                    .AddEntityFrameworkStores<EduHomeDbContext>();

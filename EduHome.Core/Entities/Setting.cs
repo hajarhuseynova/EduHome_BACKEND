@@ -27,6 +27,15 @@ namespace EduHome.Core.Entities
         public string Phone2 { get; set; }
         public string Email1 { get; set; }
         public string Email2 { get; set; }
+        public string Link1 { get; set; }
+        public string Link2 { get; set; }
+        public string Link3 { get; set; }
+        public string Link4 { get; set; }
+        public string Icon1 { get; set; }
+        public string Icon2 { get; set; }
+        public string Icon3 { get; set; }
+        public string Icon4 { get; set; }
+
 
 
 

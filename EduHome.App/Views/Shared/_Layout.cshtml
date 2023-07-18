@@ -1,4 +1,7 @@
-﻿
+﻿@inject EduHome.App.Services.Interfaces.ISettingService settingService
+@{
+    Setting? setting = await settingService.Get();
+}
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -42,7 +45,7 @@
 		            <div class="row">
 		                <div class="col-md-8 col-sm-8 col-xs-12">
 		                    <div class="header-top-left">
-		                        <p>HAVE ANY QUESTION ?  +880 5698  598  6587</p>
+		                        <p>HAVE ANY QUESTION ?  @setting?.Phone1</p>
 		                    </div>
 		                </div>
 		                <div class="col-md-4 col-sm-4 col-xs-12">
@@ -72,7 +75,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-6">
 							<div class="logo">
 								<a asp-action="index" asp-controller="home">
-                                    <img src="~/assets/img/f31a98eb-fdf4-4b02-8e9b-e227851c8309footer-logo.png" alt="eduhome" />
+                                    <img src="~/assets/img/@setting?.Logo" alt="eduhome" />
                                    
                                     </a>
 							</div>
@@ -167,17 +170,17 @@
                                 <div class="footer-logo pb-25">
                                     <a asp-action="index" asp-controller="home">
                                    
-                                    <img src="~/assets/img/f31a98eb-fdf4-4b02-8e9b-e227851c8309footer-logo.png" alt="eduhome" />
+                                    <img src="~/assets/img/@setting?.Logo" alt="eduhome" />
                                     
                                     </a>
                                 </div>
-                                <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and give you a coete account of the system. </p>
+                                <p>@setting?.Desc1 </p>
                                 <div class="footer-social">
                                     <ul>
-                                        <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
-                                        <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                        <li><a href="@setting?.Link1">@Html.Raw(setting?.Icon1)</a></li>
+                                        <li><a href="@setting?.Link2">@Html.Raw(setting?.Icon2)</a></li>
+                                        <li><a href="@setting?.Link3">@Html.Raw(setting?.Icon3)</a></li>
+                                        <li><a href="@setting?.Link4">@Html.Raw(setting?.Icon4)</a></li>
                                     </ul>    
                                 </div>
                             </div>
@@ -209,9 +212,9 @@
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="single-widget">
                                 <h3>get in touch</h3>
-                                <p>Your address goes here, Street<br>City, Roadno 785 New York</p>
-                                <p>+880  548  986  898  87<br>+880  659  785  658  98</p>
-                                <p>info@eduhome.com<br>www.eduhome.com</p>
+                                <p>@setting?.Address<br>@setting?.CityCountry</p>
+                                <p>@setting?.Phone1<br>@setting?.Phone2</p>
+                                <p>@setting?.Email1<br>@setting?.Email2</p>
                             </div>
                         </div>
                     </div>
