@@ -1,4 +1,9 @@
 ﻿@model UserUpdateViewModel
+
+
+
+
+
 <div class="banner-area-wrapper">
             <div class="banner-area text-center">	
                 <div class="container">
@@ -28,6 +33,7 @@
                                 </div>
                                 <div class="login-form">
                                     <form action="#" method="post">
+                                          <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
                                            <div class="form-outline flex-fill mb-0">
                                             <input asp-for="Name" class="form-control" placeholder="Name" />
                                         </div>
@@ -66,3 +72,4 @@
                 </div>
             </div>
         </div>
+

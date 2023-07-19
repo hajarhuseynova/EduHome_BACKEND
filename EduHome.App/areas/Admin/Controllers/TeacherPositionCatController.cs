@@ -74,7 +74,7 @@ namespace EduHome.App.areas.Admin.Controllers
             cat.UpdatedDate = DateTime.Now;
             cat.Name = teacherPositionCats.Name;
             await _context.SaveChangesAsync();
-            return RedirectToAction("index", "teacherpositioncats");
+            return RedirectToAction("index", "teacherpositioncat");
         }
 
         [HttpGet]

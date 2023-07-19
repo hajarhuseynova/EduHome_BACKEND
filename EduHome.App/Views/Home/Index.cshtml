@@ -14,16 +14,27 @@
     <div style="display:none" id="message">@TempData["Login"]</div>
 }
 
-
 @if (!string.IsNullOrWhiteSpace((string)TempData["Logout"]))
 {
     <div style="display:none" id="message">@TempData["Logout"]</div>
 }
 
+@if (!string.IsNullOrWhiteSpace((string)TempData["EmailRegex"]))
+{
+    <div style="display:none" id="message">@TempData["EmailRegex"]</div>
+}
+
+@if (!string.IsNullOrWhiteSpace((string)TempData["EmailNull"]))
+{
+    <div style="display:none" id="message">@TempData["EmailNull"]</div>
+}
+
+
 @if (!string.IsNullOrWhiteSpace((string)TempData["Subs"]))
 {
     <div style="display:none" id="message">@TempData["Subs"]</div>
 }
+
 
 
 @model HomeViewModel

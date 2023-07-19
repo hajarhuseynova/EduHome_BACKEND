@@ -28,13 +28,15 @@ namespace EduHome.App.Controllers
         {
             if(name==null || subject==null || message==null || email==null)
             {
-            return RedirectToAction("index", "contact");
+                TempData["ContactFalse"] = "Please,fill the all gab!";
+                return RedirectToAction("index", "contact");
 
             }
             Regex regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
             if (!regex.IsMatch(email))
             {
-                return RedirectToAction("index", "home");
+                TempData["EmailReg"] = "Email must be true version!";
+                return RedirectToAction("index", "contact");
             }
 
             SendMessage mes = new SendMessage
@@ -47,6 +49,7 @@ namespace EduHome.App.Controllers
             };
             _context.SendMessages.Add(mes);
             _context.SaveChanges();
+            TempData["ContactTrue"] = "Successfully send!";
             return RedirectToAction("index", "contact");
         }
 

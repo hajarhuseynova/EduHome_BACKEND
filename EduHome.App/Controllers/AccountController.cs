@@ -4,6 +4,7 @@ using EduHome.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 
 namespace EduHome.App.Controllers
 {
@@ -33,12 +34,22 @@ namespace EduHome.App.Controllers
             {
                 return View(registerViewModel);
             }
+
+            Regex regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+            if (!regex.IsMatch(registerViewModel.Email))
+            {
+              
+                return RedirectToAction("register", "account");
+            }
+
             AppUser appUser = new AppUser();
             appUser.Email = registerViewModel.Email;
             appUser.Name = registerViewModel.Name;
             appUser.Surname = registerViewModel.Surname;
             appUser.UserName = registerViewModel.UserName;
-         
+
+       
+
             IdentityResult identityResult = await _userManager.CreateAsync(appUser, registerViewModel.Password);
             if (!identityResult.Succeeded)
             {
@@ -132,6 +143,7 @@ namespace EduHome.App.Controllers
         {
             string UserName = User.Identity.Name;
             AppUser appUser = await _userManager.FindByNameAsync(UserName);
+          
             return View(appUser);
         }
         [Authorize]
@@ -191,7 +203,7 @@ namespace EduHome.App.Controllers
                 }
             }
             await _signinManager.SignInAsync(user, true);
-            TempData["Updateuser"] = "ok";
+         
             return RedirectToAction(nameof(Info));
         }
         [HttpGet]
@@ -205,7 +217,8 @@ namespace EduHome.App.Controllers
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null)
             {
-                return NotFound();
+                TempData["EmailNotFound"] = "Email is not found!";
+                return RedirectToAction("forgetpassword", "account");
             }
             string token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
@@ -241,12 +254,19 @@ namespace EduHome.App.Controllers
             if (user == null)
             {
                 return NotFound();
+              
+            }
+           if(resetPassword.Password == null || resetPassword.ConfirmPassword==null)
+            {
+                return NotFound();
             }
             var result = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
             if (!result.Succeeded)
             {
                 return Json(result.Errors);
+
             }
+            TempData["TruePassword"] = "Successfully!";
             return RedirectToAction("login", "account");
 
         }

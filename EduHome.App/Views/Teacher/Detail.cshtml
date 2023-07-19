@@ -67,7 +67,7 @@
                         </div>  
                         <div class="skill-wrapper">     
                             <div class="row">
-                          @foreach (var skill in Model.Teacher.Skills )
+                          @foreach (var skill in Model.Teacher.Skills.Take(6) )
                           {
                                    <div class="col-sm-4">
                                     <div class="skill-bar-item">

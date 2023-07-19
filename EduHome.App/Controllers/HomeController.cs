@@ -55,12 +55,14 @@ namespace EduHome.App.Controllers
 
             if (email == null)
             {
-                return RedirectToAction("index", "contact");
+                TempData["EmailNull"] = "Don't send empty email!";
+                return Redirect(Request.Headers["Referer"].ToString());
 
             }
             if (!regex.IsMatch(email))
             {
-                return RedirectToAction("index", "home");
+                TempData["EmailRegex"] = "Email must be true version!";
+                return Redirect(Request.Headers["Referer"].ToString());
             }
             Subscribe sub = new Subscribe
             {
@@ -71,7 +73,7 @@ namespace EduHome.App.Controllers
             _context.SaveChanges();
 
             TempData["Subs"] = "Send!";
-            return RedirectToAction("index", "home");
+            return Redirect(Request.Headers["Referer"].ToString());
         }
 
     }
