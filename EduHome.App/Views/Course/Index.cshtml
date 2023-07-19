@@ -24,11 +24,15 @@
                     <div class="course-title">
                         <h3>search courses</h3>
                     </div>
+
                     <div class="course-form">
-                        <form id="search" action="#">
-                            <input type="search" placeholder="Search..." name="search" />
+
+                        <form method="post" asp-action="Index" asp-controller="course" enctype="multipart/form-data" >
+                            <input name="key" placeholder="Search..." type="search" class="form-control">
                             <button type="submit">search</button>
                         </form>
+
+
                     </div>
                 </div>
             </div>    
@@ -36,14 +40,12 @@
              <div class="row">
                   @await Html.PartialAsync("_CoursePartialView",Model.Courses.Take(9).ToList())
 
-              
             </div>
-                               <nav aria-label="Page navigation example">
+
+ <nav aria-label="Page navigation example">
         <ul class="pagination">
             @for (int i = 1; i <= ViewBag.TotalPage; i++)
             {
-
-
                 @if (i == ViewBag.CurrentPage)
                 {
                     <li class="page-item disabled"><a  class=" page-link" asp-controller="course" asp-action="index" asp-route-page="@i">@i</a></li>
@@ -54,6 +56,7 @@
                 }
             }
         </ul>
-    </nav>
+</nav>
         </div> 
         </div>   
+

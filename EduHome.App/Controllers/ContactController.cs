@@ -3,6 +3,7 @@ using EduHome.App.ViewModels;
 using EduHome.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace EduHome.App.Controllers
 {
@@ -15,10 +16,12 @@ namespace EduHome.App.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //HomeViewModel homeViewModel = new HomeViewModel();
-            //homeViewModel.Settings = await _context.Settings.Where(x => !x.IsDeleted).ToListAsync();
 
-            return View();
+            ContactViewModel contactViewModel = new ContactViewModel();
+            contactViewModel.Setting = await _context.Settings.Where(x => !x.IsDeleted).FirstOrDefaultAsync();
+            contactViewModel.Message = await _context.SendMessages.Where(x => !x.IsDeleted).FirstOrDefaultAsync();
+
+            return View(contactViewModel);
         }
 
         public async Task<IActionResult> SendMessage(string name, string subject, string message, string email)
@@ -28,6 +31,12 @@ namespace EduHome.App.Controllers
             return RedirectToAction("index", "contact");
 
             }
+            Regex regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+            if (!regex.IsMatch(email))
+            {
+                return RedirectToAction("index", "home");
+            }
+
             SendMessage mes = new SendMessage
             {
                 Name = name,

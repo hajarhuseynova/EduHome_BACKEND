@@ -51,6 +51,7 @@ namespace EduHome.App.areas.Admin.Controllers
             await _userManager.AddToRoleAsync(Admin, "Admin");
             return Json("ok");
         }
+
         public async Task<IActionResult> Login()
         {
             return View();
@@ -67,6 +68,17 @@ namespace EduHome.App.areas.Admin.Controllers
             }
             Microsoft.AspNetCore.Identity.SignInResult result =
                 await _signinManager.PasswordSignInAsync(appUser, login.Password, login.isRememberMe, true);
+
+            var role = await _userManager.GetRolesAsync(appUser);
+            foreach (var roles in role)
+            {
+                if (roles == "User")
+                {
+                    ModelState.AddModelError("", "Wrong!");
+                    return View();
+                }
+
+            }
 
             if (!result.Succeeded)
             {

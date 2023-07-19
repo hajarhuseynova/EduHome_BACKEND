@@ -8,15 +8,22 @@
 {
     <div style="display:none" id="message">@TempData["Forget"]</div>
 }
+
 @if (!string.IsNullOrWhiteSpace((string)TempData["Login"]))
 {
     <div style="display:none" id="message">@TempData["Login"]</div>
 }
+
+
 @if (!string.IsNullOrWhiteSpace((string)TempData["Logout"]))
 {
     <div style="display:none" id="message">@TempData["Logout"]</div>
 }
 
+@if (!string.IsNullOrWhiteSpace((string)TempData["Subs"]))
+{
+    <div style="display:none" id="message">@TempData["Subs"]</div>
+}
 
 
 @model HomeViewModel

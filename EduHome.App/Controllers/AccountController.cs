@@ -83,11 +83,28 @@ namespace EduHome.App.Controllers
         {
 
             AppUser appUser = await _userManager.FindByNameAsync(loginViewModel.UserName);
+
+
             if (appUser == null)
             {
                 ModelState.AddModelError("", "username or password is incorret");
                 return View();
             }
+
+           
+         var role = await _userManager.GetRolesAsync(appUser);
+          foreach(var roles in role)
+            {
+                if (roles!="User")
+                {
+                    ModelState.AddModelError("", "Wrong!");
+                    return View();
+                }
+
+            }
+     
+
+
             var result = await _signinManager.PasswordSignInAsync(appUser, loginViewModel.Password, loginViewModel.isRememberMe, true);
             if (!result.Succeeded)
             {

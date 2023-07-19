@@ -6,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
-   [Area("Admin")]
+    [Area("Admin")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class ContactController : Controller
     {
         private readonly EduHomeDbContext _context;

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
-    [Area("Manage")]
+    [Area("Admin")]
     [Authorize(Roles = "Admin,SuperAdmin")]
     public class SkillsController : Controller
     {

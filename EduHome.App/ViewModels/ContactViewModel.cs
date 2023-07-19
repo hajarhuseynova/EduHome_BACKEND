@@ -4,11 +4,8 @@ namespace EduHome.App.ViewModels
 {
     public class ContactViewModel
     {
-
-        //public Setting? Setting { get; set; }
+        public Setting? Setting { get; set; }
         public SendMessage? Message { get; set; }
-
-
 
     }
 }

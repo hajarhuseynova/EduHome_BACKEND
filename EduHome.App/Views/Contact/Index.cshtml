@@ -1,9 +1,5 @@
-﻿@model SendMessage
+﻿@model ContactViewModel
 
-@*@inject EduHome.App.Services.Interfaces.ISettingService settingService
-	@{
-	Setting? setting = await settingService.Get();
-	}*@
 <div class="banner-area-wrapper">
 	<div class="banner-area text-center">
 		<div class="container">
@@ -36,6 +32,36 @@
 		<div class="row">
 			<div class="col-md-5 col-sm-5 col-xs-12">
 				<div class="contact-contents text-center">
+					 <div class="single-contact mb-65">
+                                <div class="contact-icon">
+                                    <img src="~/assets/img/contact/contact1.png" alt="contact">
+                                </div>
+                                <div class="contact-add">
+                                    <h3>address</h3>
+                                    <p>@Model.Setting?.Address</p>
+                                    <p>@Model.Setting?.CityCountry</p>
+                                </div>
+                            </div>
+                            <div class="single-contact mb-65">
+                                <div class="contact-icon">
+                                    <img src="~/assets/img/contact/contact2.png" alt="contact">
+                                </div>
+                                <div class="contact-add">
+                                    <h3>Phone</h3>
+                                    <p>@Model.Setting?.Phone1</p>
+                                    <p>@Model.Setting?.Phone2</p>
+                                </div>
+                            </div>
+                            <div class="single-contact">
+                                <div class="contact-icon">
+                                    <img src="~/assets/img/contact/contact3.png" alt="contact">
+                                </div>
+                                <div class="contact-add">
+                                    <h3>Email</h3>
+                                    <p>@Model.Setting?.Email1</p>
+                                    <p>@Model.Setting?.Email2</p>
+                                </div>
+                            </div>
 				</div>
 			</div>
 			<div class="col-md-7 col-sm-7 col-xs-12">
@@ -46,28 +72,27 @@
 						<div class="row">
 
 							<div class="form-group">
-								<label asp-for="Name">Name</label>
+								<label asp-for="@Model.Message.Name">Name</label>
 								<input name="name" type="text" class="form-control">
-								<span class="text text-danger" asp-validation-for="Name"></span>
+								<span class="text text-danger" asp-validation-for="@Model.Message.Name"></span>
 							</div>
 
 							<div class="form-group">
-
-								<label asp-for="Email">Email</label>
+								<label asp-for="@Model.Message.Email">Email</label>
 								<input name="email" type="email" class="form-control">
-								<span class="text text-danger" asp-validation-for="Email"></span>
+								<span class="text text-danger" asp-validation-for="@Model.Message.Email"></span>
 							</div>
 
 							<div class="form-group">
-								<label asp-for="Subject">Subject</label>
+								<label asp-for="@Model.Message.Subject">Subject</label>
 								<input name="subject" class="form-control">
-								<span class="text text-danger" asp-validation-for="Subject"></span>
+								<span class="text text-danger" asp-validation-for="@Model.Message.Subject"></span>
 							</div>
 
 							<div class="form-group">
-								<label asp-for="Message">Message</label>
+								<label asp-for="@Model.Message.Message">Message</label>
 								<input name="message" class="form-control">
-								<span class="text text-danger" asp-validation-for="Message"></span>
+								<span class="text text-danger" asp-validation-for="@Model.Message.Message"></span>
 							</div>
 
 						</div>

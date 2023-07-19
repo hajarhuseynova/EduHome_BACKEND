@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace EduHome.App.Controllers
 {
@@ -50,6 +51,17 @@ namespace EduHome.App.Controllers
         [HttpPost]
         public async Task<IActionResult> Subscribe(string email)
         {
+            Regex regex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+
+            if (email == null)
+            {
+                return RedirectToAction("index", "contact");
+
+            }
+            if (!regex.IsMatch(email))
+            {
+                return RedirectToAction("index", "home");
+            }
             Subscribe sub = new Subscribe
             {
                 Email = email,
@@ -57,6 +69,8 @@ namespace EduHome.App.Controllers
             };
             _context.Subscribes.AddAsync(sub);
             _context.SaveChanges();
+
+            TempData["Subs"] = "Send!";
             return RedirectToAction("index", "home");
         }
 

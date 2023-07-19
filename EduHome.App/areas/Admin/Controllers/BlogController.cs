@@ -9,8 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
-    [Area("")]
-  
+    [Area("Admin")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
+
     public class BlogController : Controller
     {
        
@@ -92,10 +93,11 @@ namespace EduHome.App.areas.Admin.Controllers
             await _context.AddAsync(blog);
             await _context.SaveChangesAsync();
 
-            var mails=_context.Subscribes.ToList(); 
-            foreach(var mail in mails)
+            var mails = await _context.Subscribes.Where(x=>!x.IsDeleted).ToListAsync();
+            string? link = Request.Scheme + "://" + Request.Host + $"/Blog/detail/{blog.Id}";
+            foreach (var mail in mails)
             {
-                await _mailService.Send("hajarih@code.edu.az", mail.Email, $"localhost:7263/blog/detail/{blog.Id}", "New Blog");
+                await _mailService.Send("hajarih@code.edu.az", mail.Email,link, "New Blog");
             }
             return RedirectToAction("index", "blog");
 

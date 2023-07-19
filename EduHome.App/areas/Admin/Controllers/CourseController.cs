@@ -1,6 +1,7 @@
 ﻿using EduHome.App.Context;
 using EduHome.App.Extentions;
 using EduHome.App.Helpers;
+using EduHome.App.Services.Interfaces;
 using EduHome.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,18 +9,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.App.areas.Admin.Controllers
 {
-    [Area("Manage")]
+    [Area("Admin")]
     [Authorize(Roles = "Admin,SuperAdmin")]
+  
     public class CourseController : Controller
     {
         private readonly EduHomeDbContext _context;
         private readonly IWebHostEnvironment _environment;
+        private readonly IMailService _mailService;
 
-        public CourseController(EduHomeDbContext context, IWebHostEnvironment environment)
+        public CourseController(EduHomeDbContext context, IWebHostEnvironment environment, IMailService mailService)
         {
             _context = context;
             _environment = environment;
-
+            _mailService = mailService;
         }
         public async Task<IActionResult> Index(int page = 1)
         {
@@ -92,6 +95,16 @@ namespace EduHome.App.areas.Admin.Controllers
             course.Image = course.FormFile.CreateImage(_environment.WebRootPath, "assets/img/");
             await _context.AddAsync(course);
             await _context.SaveChangesAsync();
+
+
+            var mails = await _context.Subscribes.Where(x => !x.IsDeleted).ToListAsync();
+
+            string? link = Request.Scheme + "://" + Request.Host + $"/Course/detail/{course.Id}";
+            foreach (var mail in mails)
+            {
+                await _mailService.Send("hajarih@code.edu.az", mail.Email, link, "New Course");
+            }
+
             return RedirectToAction("Index", "Course");
         }
         public async Task<IActionResult> Update(int id)
