@@ -25,6 +25,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             int TotalCount = _context.Tag.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
+            ViewBag.CurrentPage = page;
 
             IEnumerable<Tag> Tags = await _context.Tag.
                 Where(c => !c.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();

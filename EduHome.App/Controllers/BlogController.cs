@@ -16,6 +16,7 @@ namespace EduHome.App.Controllers
         {
             int TotalCount = _context.Blogs.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 6);
+            ViewBag.CurrentPage = page;
             if (id == null)
             {
                 BlogViewModel blogViewModel = new BlogViewModel

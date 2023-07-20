@@ -29,6 +29,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             int TotalCount = _context.Blogs.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
+            ViewBag.CurrentPage = page;
 
             IEnumerable<Blog> Blogs = await _context.Blogs.
                    Include(x => x.CourseCategory).

@@ -23,6 +23,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             int TotalCount = _context.NoticeBoards.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
+            ViewBag.CurrentPage = page;
 
             IEnumerable<NoticeBoard> noticeBoards = await _context.NoticeBoards.
                 Where(x => !x.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();

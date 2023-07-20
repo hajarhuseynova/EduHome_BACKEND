@@ -26,6 +26,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             int TotalCount = _context.Testinomials.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
+            ViewBag.CurrentPage = page;
 
             IEnumerable<Testinomial> testinomials = await _context.Testinomials.
                 Include(x => x.PositionCategory).

@@ -10,6 +10,7 @@ namespace EduHome.App.Controllers
 {
     public class AccountController : Controller
     {
+
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signinManager;
@@ -250,6 +251,10 @@ namespace EduHome.App.Controllers
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordViewModel resetPassword)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(resetPassword);
+            }
             var user = await _userManager.FindByEmailAsync(resetPassword.Email);
             if (user == null)
             {
@@ -263,9 +268,11 @@ namespace EduHome.App.Controllers
             var result = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
             if (!result.Succeeded)
             {
-                return Json(result.Errors);
+                TempData["FalsePassword"] = "Is not Valid!";
+                return View();
 
             }
+
             TempData["TruePassword"] = "Successfully!";
             return RedirectToAction("login", "account");
 

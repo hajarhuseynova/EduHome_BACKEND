@@ -24,6 +24,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             int TotalCount = _context.CourseCategories.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
+            ViewBag.CurrentPage = page;
             IEnumerable<CourseCategory> CourseCategories =
                 await _context.CourseCategories.Where(c => !c.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();
             return View(CourseCategories);

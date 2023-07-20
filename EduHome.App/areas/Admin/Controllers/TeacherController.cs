@@ -28,6 +28,7 @@ namespace EduHome.App.areas.Admin.Controllers
         {
             int TotalCount = _context.Teachers.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 5);
+            ViewBag.CurrentPage = page;
 
             IEnumerable<Teacher> teachers =
              await _context.Teachers

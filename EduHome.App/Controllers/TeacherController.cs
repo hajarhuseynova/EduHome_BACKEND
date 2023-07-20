@@ -18,6 +18,7 @@ namespace EduHome.App.Controllers
         {
             int TotalCount = _context.Teachers.Where(x => !x.IsDeleted).Count();
             ViewBag.TotalPage = (int)Math.Ceiling((decimal)TotalCount / 12);
+            ViewBag.CurrentPage = page;
             TeacherViewModel teacherViewModel = new TeacherViewModel
             {
                 Teachers = await _context.Teachers
