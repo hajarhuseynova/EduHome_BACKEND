@@ -14,10 +14,10 @@
                             </div>
                             <div class="course-content">
                                
-                                <h3><a href="course-details.html">@item.CourseCategory.Name</a></h3>
+                                <h3><a asp-action="detail" asp-controller="course" asp-route-id="@item.Id">@item.CourseCategory.Name</a></h3>
              
                                 <p>@item.Info</p>
-                                <a class="default-btn" href="">read more</a>
+                                <a class="default-btn"asp-action="detail" asp-controller="course" asp-route-id="@item.Id">read more</a>
                             </div>   
                         </div>
                     </div>

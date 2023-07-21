@@ -96,7 +96,6 @@ namespace EduHome.App.areas.Admin.Controllers
             Teacher? teacher = await _context.Teachers.
                 Where(t => !t.IsDeleted && t.Id == id).FirstOrDefaultAsync();
 
-
             ViewBag.TeacherPositionCats = await _context.TeacherPositionCats.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.Faculty = await _context.Faculty.Where(x => !x.IsDeleted).ToListAsync();
 
@@ -116,6 +115,15 @@ namespace EduHome.App.areas.Admin.Controllers
             Teacher? updatedteacher = await _context.
                 Teachers.Where(t => !t.IsDeleted && t.Id == id).FirstOrDefaultAsync();
 
+            ViewBag.TeacherPositionCats = await _context.TeacherPositionCats.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Faculty = await _context.Faculty.Where(x => !x.IsDeleted).ToListAsync();
+
+
+            if (teacher.TeacherPositionCatId == 0 || teacher.FacultyId == 0)
+            {
+                ModelState.AddModelError("", "Every column must be selected");
+                return View(updatedteacher);
+            }
 
             if (teacher is null)
             {
@@ -148,7 +156,7 @@ namespace EduHome.App.areas.Admin.Controllers
             updatedteacher.Degree = teacher.Degree;
             updatedteacher.Mail = teacher.Mail;
             updatedteacher.Phone = teacher.Phone;
-            updatedteacher.Faculty = teacher.Faculty;
+            updatedteacher.FacultyId = teacher.FacultyId;
             updatedteacher.Skills = teacher.Skills;
             updatedteacher.Skype = teacher.Skype;
             updatedteacher.ExperienceTime = teacher.ExperienceTime;

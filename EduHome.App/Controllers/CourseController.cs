@@ -81,7 +81,7 @@ namespace EduHome.App.Controllers
         {
             int TotalCount = _context.Courses.Where(x => !x.IsDeleted && x.Name.Trim().ToLower().Contains(search.Trim().ToLower())).Count();
          
-            List<Course> courses = await _context.Courses.Where(x => !x.IsDeleted && x.Name.Trim().ToLower().Contains(search.Trim().ToLower()))
+            List<Course> courses = await _context.Courses.Where(x => !x.IsDeleted && x.CourseCategory.Name.Trim().ToLower().Contains(search.Trim().ToLower()))
                 .Include(x => x.Feature)
                   .Include(x => x.CourseCategory)
            

@@ -3,6 +3,23 @@
     Setting? setting = await settingService.Get();
 }
 
+@if (!string.IsNullOrWhiteSpace((string)TempData["EmailRegex"]))
+{
+    <div style="display:none" id="message">@TempData["EmailRegex"]</div>
+}
+
+@if (!string.IsNullOrWhiteSpace((string)TempData["EmailNull"]))
+{
+    <div style="display:none" id="message">@TempData["EmailNull"]</div>
+}
+
+
+@if (!string.IsNullOrWhiteSpace((string)TempData["Subs"]))
+{
+    <div style="display:none" id="message">@TempData["Subs"]</div>
+}
+
+
 <!doctype html>
 <html class="no-js" lang="en">
     
@@ -246,3 +263,14 @@
 
 <!-- Mirrored from demo.devitems.com/eduhome/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 19:41:25 GMT -->
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const Message = document.getElementById("message");
+    if (Message != undefined) {
+        const message = Message.innerHTML;
+        if (message != "") {
+            Swal.fire(`${message}`)
+        }
+
+    }</script>

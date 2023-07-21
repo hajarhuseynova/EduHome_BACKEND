@@ -1,5 +1,23 @@
 ﻿@model HomeViewModel
 
+@if (!string.IsNullOrWhiteSpace((string)TempData["EmailRegex"]))
+{
+    <div style="display:none" id="message">@TempData["EmailRegex"]</div>
+}
+
+@if (!string.IsNullOrWhiteSpace((string)TempData["EmailNull"]))
+{
+    <div style="display:none" id="message">@TempData["EmailNull"]</div>
+}
+
+
+@if (!string.IsNullOrWhiteSpace((string)TempData["Subs"]))
+{
+    <div style="display:none" id="message">@TempData["Subs"]</div>
+}
+
+
+
  	<div class="banner-area-wrapper">
             <div class="banner-area text-center">	
                 <div class="container">
@@ -18,24 +36,7 @@
             <div class="about-area pb-155">
             <div class="container">
            
-                 @foreach (var item in Model.Settings)
-                 {
-                      <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <div class="about-content">
-                            <h2>WELCOME TO <span>@item.Title</span></h2>
-                            <p>@item.Desc1</p>
-                            <p class="hidden-sm">@item.Desc2</p>
-                            <a class="default-btn" href="@item.ButtonLink">view courses</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <div class="about-img">
-                            <img src="~/assets/img/@item.AboutImage" alt="about">
-                        </div>
-                    </div>
-                </div>  
-                 }
+             @await Html.PartialAsync("_AboutPartialView",Model)
             
             </div>
         </div>
@@ -99,3 +100,15 @@
                 </div>
             </div>
         </section>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const Message = document.getElementById("message");
+    if (Message != undefined) {
+        const message = Message.innerHTML;
+        if (message != "") {
+            Swal.fire(`${message}`)
+        }
+
+    }</script>

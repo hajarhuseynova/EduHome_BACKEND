@@ -40,7 +40,7 @@ namespace EduHome.App.areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Feature feature)
         {
-            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted && x.Feature == null).ToListAsync();
+            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted && x.Feature == null ).ToListAsync();
 
             if (!ModelState.IsValid)
             {
@@ -54,7 +54,7 @@ namespace EduHome.App.areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted && x.Feature == null).ToListAsync();
 
             Feature? feature = await _context.Feature.Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
             if (feature == null)
@@ -67,10 +67,12 @@ namespace EduHome.App.areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, Feature feature)
         {
-            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted).ToListAsync();
+            ViewBag.Course = await _context.Courses.Where(x => !x.IsDeleted && x.Id == id && x.Feature == null).ToListAsync();
 
             Feature? fec = await _context.Feature
                 .Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
+
+
 
             if (!ModelState.IsValid)
             {

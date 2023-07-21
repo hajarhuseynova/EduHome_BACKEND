@@ -100,9 +100,17 @@ namespace EduHome.App.areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, Testinomial testinomial)
         {
+        
+            Testinomial? UpdateTes = await _context.Testinomials.Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
             ViewBag.CourseCategory = await _context.CourseCategories.Where(x => !x.IsDeleted).ToListAsync();
             ViewBag.PositionCategory = await _context.PositionCategories.Where(x => !x.IsDeleted).ToListAsync();
-            Testinomial? UpdateTes = await _context.Testinomials.Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
+
+            if (testinomial.PositionCategoryId== 0 || testinomial.CourseCategoryId == 0)
+            {
+                ModelState.AddModelError("", "Every column must be selected");
+                return View(UpdateTes);
+            }
+
 
             if (testinomial is null)
             {
@@ -134,7 +142,7 @@ namespace EduHome.App.areas.Admin.Controllers
             UpdateTes.Desc = testinomial.Desc;
             UpdateTes.PersonName = testinomial.PersonName;
             UpdateTes.CourseCategoryId = testinomial.CourseCategoryId;
-            UpdateTes.PositionCategoryId = testinomial.PositionCategoryId;
+            UpdateTes.PositionCategoryId= testinomial.PositionCategoryId;
 
 
             await _context.SaveChangesAsync();

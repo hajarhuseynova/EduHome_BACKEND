@@ -91,7 +91,6 @@ namespace EduHome.App.areas.Admin.Controllers
 
             course.CourseCategory = await _context.CourseCategories.Where(x => x.Id == course.CourseCategoryId).FirstOrDefaultAsync();
            
-           
             course.CreatedDate = DateTime.Now;
             course.Image = course.FormFile.CreateImage(_environment.WebRootPath, "assets/img/");
             await _context.AddAsync(course);
@@ -143,6 +142,12 @@ namespace EduHome.App.areas.Admin.Controllers
                 .Include(x=>x.CourseCategory).
                 Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
 
+            if (course.CourseCategoryId == 0 )
+            {
+                ModelState.AddModelError("", "Every column must be selected");
+                return View(UpdateCourse);
+            }
+
             if (course is null)
             {
                 return NotFound();
@@ -186,6 +191,7 @@ namespace EduHome.App.areas.Admin.Controllers
                 }
 
             }
+
             UpdateCourse.ApplyText=course.ApplyText;
             UpdateCourse.AboutText=course.AboutText;
             UpdateCourse.Certification = course.Certification;
