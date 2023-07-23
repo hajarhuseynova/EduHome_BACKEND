@@ -45,8 +45,7 @@
                                 <div class="course-details-right">
                                     <h3>COURSE FEATURES</h3>
                                  
-                                @if (!Model.Course.Feature.IsDeleted)
-                                {
+                              
                                     <ul>
                                     <li>starts <span>@Model.Course.Feature?.StartTime.ToString("MM:dd:yyyy")</span></li>
                                     <li>duration <span>@Model.Course.Feature?.Duration Month</span></li>
@@ -59,7 +58,7 @@
                             </ul>
                                    
                                      <h3 class="red">course fee $@Model.Course.Feature?.Fee</h3>
-                                }
+                                
                                   
                                 </div>
                             </div>    

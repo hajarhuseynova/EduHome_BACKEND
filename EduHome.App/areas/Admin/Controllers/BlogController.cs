@@ -88,9 +88,12 @@ namespace EduHome.App.areas.Admin.Controllers
             }
             blog.CourseCategory = await _context.CourseCategories.Where(x => x.Id == blog.CourseCategoryId).FirstOrDefaultAsync();
 
-          
+
+
+
             blog.Image = blog.FormFile.CreateImage(_environment.WebRootPath, "assets/img/");
             blog.CreatedDate = DateTime.Now;
+
             await _context.AddAsync(blog);
             await _context.SaveChangesAsync();
 
@@ -111,8 +114,10 @@ namespace EduHome.App.areas.Admin.Controllers
             ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
 
             Blog? blog = await _context.Blogs.
-                Where(c => !c.IsDeleted && c.Id == id).Include(x => x.BlogTags).
-                ThenInclude(x => x.Tag).Include(x => x.CourseCategory)
+                Where(c => !c.IsDeleted && c.Id == id)
+                .Include(x => x.BlogTags.Where(x => !x.IsDeleted)).
+                ThenInclude(x => x.Tag)
+                .Include(x => x.CourseCategory)
                 .FirstOrDefaultAsync();
 
             if (blog == null)
@@ -130,7 +135,7 @@ namespace EduHome.App.areas.Admin.Controllers
             ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
 
             Blog? Update = await _context.Blogs.
-                Where(c => !c.IsDeleted && c.Id == id).Include(x=>x.BlogTags).
+                Where(c => !c.IsDeleted && c.Id == id).Include(x=>x.BlogTags.Where(x => !x.IsDeleted)).
                 ThenInclude(x => x.Tag).Include(x => x.CourseCategory)
                 .FirstOrDefaultAsync();
 
@@ -161,10 +166,12 @@ namespace EduHome.App.areas.Admin.Controllers
             }
 
             List<BlogTag> RemovableTag = await _context.BlogTags.
-               Where(x => !blog.TagIds.Contains(x.TagId))
-               .ToListAsync();
+                     Where(x => !blog.TagIds.Contains(x.TagId))
+                     .ToListAsync();
+
 
             _context.BlogTags.RemoveRange(RemovableTag);
+
 
             foreach (var item in blog.TagIds)
             {
@@ -177,9 +184,11 @@ namespace EduHome.App.areas.Admin.Controllers
                 {
                     TagId = item,
                     Blog = blog,
-                    CreatedDate = DateTime.Now
+         
                 };
             }
+
+
             Update.Name = blog.Name;
             Update.Desc = blog.Desc;
             Update.Icon = blog.Icon;

@@ -35,7 +35,9 @@
             </select>
             <span class="text text-danger" asp-validation-for="CourseCategoryId"></span>
         </div>
-		<div class="form-group">
+
+
+		       <div class="form-group">
             <select multiple asp-for="TagIds" class="form-select" aria-label="Disabled select example">
                 @foreach (var item in ViewBag.Tag)
                 {
@@ -52,6 +54,7 @@
             </select>
             <span class="text text-danger" asp-validation-for="TagIds"></span>
         </div>
+
 	<div class="form-group">
 		    <label asp-for="@Model.FormFile" >File:</label>
 			<input type="file" class="form-control" asp-for="@Model.FormFile"/>

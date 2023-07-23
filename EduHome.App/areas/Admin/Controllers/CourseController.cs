@@ -175,10 +175,11 @@ namespace EduHome.App.areas.Admin.Controllers
 
 
             List<CourseTag> RemovableTag = await _context.CourseTags.
-             Where(x => !UpdateCourse.TagIds.Contains(x.TagId))
+             Where(x => !course.TagIds.Contains(x.TagId))
              .ToListAsync();
 
             _context.CourseTags.RemoveRange(RemovableTag);
+
 
             foreach (var item in course.TagIds)
             {

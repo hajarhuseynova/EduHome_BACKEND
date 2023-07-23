@@ -6,7 +6,7 @@ namespace EduHome.App.ViewModels
     {
         public IEnumerable<Course> Courses { get; set; }
         public IEnumerable<CourseCategory> Categories { get; set; }
-
+        public IEnumerable<Tag> Tags { get; set; }
         public Course Course { get; set; }
        
 

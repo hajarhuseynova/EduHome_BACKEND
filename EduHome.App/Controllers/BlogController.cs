@@ -28,8 +28,9 @@ namespace EduHome.App.Controllers
                         .Where(x => !x.IsDeleted).Skip((page - 1) * 6).Take(6).ToListAsync(),
 
                     Categories = await _context.CourseCategories.Include(x=>x.Blogs.Where(x => !x.IsDeleted)).Where(b => !b.IsDeleted).ToListAsync(),
-                    Tags = await _context.Tag.Where(b=>!b.IsDeleted).ToListAsync(), 
-                 
+                    Tags = await _context.Tag.Where(b => !b.IsDeleted).ToListAsync(),
+
+
                 };
 
                 return View(blogViewModel);
@@ -46,6 +47,7 @@ namespace EduHome.App.Controllers
 
                     Categories = await _context.CourseCategories.Include(x => x.Blogs.Where(x=>!x.IsDeleted)).Where(b => !b.IsDeleted).ToListAsync(),
                     Tags = await _context.Tag.Where(b => !b.IsDeleted).ToListAsync(),
+
 
                 };
 
@@ -70,8 +72,14 @@ namespace EduHome.App.Controllers
                         .Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync(),
 
                 Categories = await _context.CourseCategories.Include(x => x.Blogs.Where(x => !x.IsDeleted)).Where(b => !b.IsDeleted).ToListAsync(),
+                Tags = await _context.Tag.Where(b => !b.IsDeleted).ToListAsync(),
 
             };
+            if (blogViewModel.Blog == null)
+            {
+                return View(nameof(Index));
+            }
+
 
             return View(blogViewModel);
         }

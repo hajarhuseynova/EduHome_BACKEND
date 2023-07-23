@@ -103,9 +103,14 @@ namespace EduHome.App.areas.Admin.Controllers
             {
                 return NotFound();
             }
-          
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var NullCourse = await _context.Courses.Where(x => !x.IsDeleted && x.Feature == feature).FirstOrDefaultAsync();
+            NullCourse.Feature = null;
             feature.IsDeleted = true;
-            //await _context.Courses.Where(x => !x.IsDeleted && x.Feature == feature).FirstOrDefaultAsync().feature = null;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
