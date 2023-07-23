@@ -64,6 +64,12 @@ namespace EduHome.App.Controllers
                 TempData["EmailRegex"] = "Email must be true version!";
                 return Redirect(Request.Headers["Referer"].ToString());
             }
+            if(await _context.Subscribes.Where(x => !x.IsDeleted).AnyAsync(x => x.Email == email))
+            {
+                TempData["EmailRepeat"] = "Email repeated!";
+                return Redirect(Request.Headers["Referer"].ToString());
+
+            }
             Subscribe sub = new Subscribe
             {
                 Email = email,
