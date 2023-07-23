@@ -16,8 +16,8 @@
                                  <p>By @item.Name  /  @item.CreatedDate.ToString("MM:dd:yyyy")  /  @Html.Raw(item.Icon) /5 </p>
                                 </div>
                                 <div class="blog-bottom">
-                                    <h2><a href="blog-details.html">@item.Desc</a></h2>
-                                    <a href="">read more</a>
+                                    <h2><a asp-action="detail" asp-controller="blog" asp-route-id="@item.Id" >@item.Desc</a></h2>
+                                    <a asp-action="detail" asp-controller="blog" asp-route-id="@item.Id">read more</a>
                                 </div>
                             </div>
                         </div>
