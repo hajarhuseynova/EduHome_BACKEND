@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4lM4gtgfYfcRJZpZFt+i7lclzBUgm5fB4bJXAlMF/Dc=",
+  "Hash": "OQGb/vn1/XKhevAXqP1mIloL3PcsDn7mySM6KijhcOs=",
   "Source": "EduHome.App",
   "BasePath": "_content/EduHome.App",
   "Mode": "Default",
@@ -2771,6 +2771,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\132440d7-1aed-40db-b3e4-b64f19fd5d4bScreenshot (18).png"
     },
     {
+      "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\16061c3c-2dfd-425e-befe-bc656d5b7419Screenshot (1).png",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/16061c3c-2dfd-425e-befe-bc656d5b7419Screenshot (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\16061c3c-2dfd-425e-befe-bc656d5b7419Screenshot (1).png"
+    },
+    {
       "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\1745fdea-be96-4e89-a4bd-82b1a27055c8Screenshot (18).png",
       "SourceId": "EduHome.App",
       "SourceType": "Discovered",
@@ -3058,6 +3075,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\24bd3132-4828-480e-bb3b-e5ef8c40f054Screenshot (1).png"
+    },
+    {
+      "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\25762a63-58a8-48e5-b047-370c879e7faeScreenshot (1).png",
+      "SourceId": "EduHome.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\",
+      "BasePath": "_content/EduHome.App",
+      "RelativePath": "assets/img/25762a63-58a8-48e5-b047-370c879e7faeScreenshot (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\25762a63-58a8-48e5-b047-370c879e7faeScreenshot (1).png"
     },
     {
       "Identity": "C:\\Users\\99455\\Desktop\\Backend-FINAL\\EduHome.App\\wwwroot\\assets\\img\\266db4cb-3bd4-4bab-9985-760724c6a5bfScreenshot (22).png",

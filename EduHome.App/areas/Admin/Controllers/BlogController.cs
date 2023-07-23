@@ -135,7 +135,7 @@ namespace EduHome.App.areas.Admin.Controllers
             ViewBag.Tag = await _context.Tag.Where(x => !x.IsDeleted).ToListAsync();
 
             Blog? Update = await _context.Blogs.
-                Where(c => !c.IsDeleted && c.Id == id).Include(x=>x.BlogTags.Where(x => !x.IsDeleted)).
+                Where(c => !c.IsDeleted && c.Id == id).Include(x=>x.BlogTags).
                 ThenInclude(x => x.Tag).Include(x => x.CourseCategory)
                 .FirstOrDefaultAsync();
 
@@ -175,19 +175,21 @@ namespace EduHome.App.areas.Admin.Controllers
 
             foreach (var item in blog.TagIds)
             {
-                if (!await _context.Tag.AnyAsync(x => x.Id == item))
+                if (_context.BlogTags.Where(x => x.BlogId == id &&
+                   x.TagId == item).Count() > 0)
                 {
-                    ModelState.AddModelError("", "Wrongg!");
-                    return View(blog);
+                    continue;
                 }
-                BlogTag blogTag = new BlogTag
+                else
                 {
-                    TagId = item,
-                    Blog = blog,
-         
-                };
-            }
+                    await _context.BlogTags.AddAsync(new BlogTag
+                    {
+                        BlogId = id,
+                        TagId = item
+                    });
+                }
 
+            }
 
             Update.Name = blog.Name;
             Update.Desc = blog.Desc;
