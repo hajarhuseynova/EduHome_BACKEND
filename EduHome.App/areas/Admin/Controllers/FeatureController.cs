@@ -26,7 +26,7 @@ namespace EduHome.App.areas.Admin.Controllers
             ViewBag.CurrentPage = page;
 
             IEnumerable<Feature> features =
-                await _context.Feature.Include(x=>x.Course).Where(c => !c.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();
+                await _context.Feature.Where(x => !x.IsDeleted).Include(x=>x.Course).Where(c => !c.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();
             return View(features);
         }
         [HttpGet]
@@ -72,8 +72,6 @@ namespace EduHome.App.areas.Admin.Controllers
             Feature? fec = await _context.Feature
                 .Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
 
-
-
             if (!ModelState.IsValid)
             {
                 return View();
@@ -97,16 +95,17 @@ namespace EduHome.App.areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("index", "feature");
         }
-
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            Feature? feature = await _context.Feature.Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync();
+            Feature? feature = await _context.Feature.Where(c => !c.IsDeleted && c.Id == id).FirstOrDefaultAsync(); ;
             if (feature == null)
             {
                 return NotFound();
             }
+          
             feature.IsDeleted = true;
+            //await _context.Courses.Where(x => !x.IsDeleted && x.Feature == feature).FirstOrDefaultAsync().feature = null;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

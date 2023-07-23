@@ -32,7 +32,7 @@ namespace EduHome.App.areas.Admin.Controllers
 
             IEnumerable<Course> Courses = await _context.Courses.
                 Include(x => x.CourseCategory).
-                Include(x=>x.Feature).
+                Include(x=>x.Feature).Where(x => !x.IsDeleted).
                 Where(x => !x.IsDeleted).Skip((page - 1) * 5).Take(5).ToListAsync();
             return View(Courses);
         }
@@ -173,6 +173,12 @@ namespace EduHome.App.areas.Admin.Controllers
                 UpdateCourse.Image = course.FormFile.CreateImage(_environment.WebRootPath, "assets/img");
             }
 
+
+            List<CourseTag> RemovableTag = await _context.CourseTags.
+             Where(x => !UpdateCourse.TagIds.Contains(x.TagId))
+             .ToListAsync();
+
+            _context.CourseTags.RemoveRange(RemovableTag);
 
             foreach (var item in course.TagIds)
             {

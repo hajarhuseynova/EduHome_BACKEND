@@ -79,7 +79,7 @@
                                 <h3>latest post</h3>
                               @foreach (var item in Model.Blogs)
                               {
-                                   <div class="single-post mb-30">
+                                   <div class="single-post mb-30" style="height:90px">
                                     <div class="single-post-img">
                                         <a asp-action="detail" asp-controller="blog" 
                                         asp-route-id="@item.Id"><img style="width:120px;height:100px" 
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="single-post-content">
                                         <h4><a href="blog-details.html">@item.Title</a></h4>
-                                        <p>By @item.Name/@item.CreatedDate</p>
+                                        <p>By @item.Name/@item.CreatedDate.ToString("MM:dd:yyyy")</p>
                                     </div>
                                 </div> 
                               }

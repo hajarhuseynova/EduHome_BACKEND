@@ -89,6 +89,8 @@ namespace EduHome.App.areas.Admin.Controllers
             ViewBag.PositionCategory = await _context.PositionCategories.Where(x => !x.IsDeleted).ToListAsync();
 
             Testinomial? testinomial = await _context.Testinomials.Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
+
+
             if (testinomial is null)
             {
                 return NotFound();

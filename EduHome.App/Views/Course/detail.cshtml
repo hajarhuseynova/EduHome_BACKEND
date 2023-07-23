@@ -45,17 +45,21 @@
                                 <div class="course-details-right">
                                     <h3>COURSE FEATURES</h3>
                                  
+                                @if (!Model.Course.Feature.IsDeleted)
+                                {
                                     <ul>
-                                        <li>starts <span>@Model.Course.Feature?.StartTime</span></li>
-                                        <li>duration <span>@Model.Course.Feature?.Duration Month</span></li>
-                                        <li>class duration <span>@Model.Course.Feature?.ClassDuration hours</span></li>
-                                        <li>skill level <span>@Model.Course.Feature?.SkillLevel</span></li>
-                                        <li>language <span>@Model.Course.Feature?.Language</span></li>
-                                        <li>students <span>@Model.Course.Feature?.StudentCount</span></li>
-                                        <li>assesments <span>@Model.Course.Feature?.Assesments</span></li>
-                                    </ul>
+                                    <li>starts <span>@Model.Course.Feature?.StartTime.ToString("MM:dd:yyyy")</span></li>
+                                    <li>duration <span>@Model.Course.Feature?.Duration Month</span></li>
+                                    <li>class duration <span>@Model.Course.Feature?.ClassDuration hours</span></li>
+                                    <li>skill level <span>@Model.Course.Feature?.SkillLevel</span></li>
+                                    <li>language <span>@Model.Course.Feature?.Language</span></li>
+                                    <li>students <span>@Model.Course.Feature?.StudentCount</span></li>
+                                    <li>assesments <span>@Model.Course.Feature?.Assesments</span></li>
+                           
+                            </ul>
                                    
                                      <h3 class="red">course fee $@Model.Course.Feature?.Fee</h3>
+                                }
                                   
                                 </div>
                             </div>    
@@ -124,7 +128,7 @@
                            
                                   @foreach (var item in Model.Courses.Take(3))
                               {
-                                   <div class="single-post mb-30">
+                                   <div class="single-post mb-30" style="height:90px">
                                     <div class="single-post-img">
                                         <a asp-action="detail" asp-controller="course" 
                                         asp-route-id="@item.Id"><img style="width:120px;height:100px" 
@@ -136,7 +140,7 @@
                                     </div>
                                     <div class="single-post-content">
                                         <h4><a href="#">@item.Name</a></h4>
-                                        <p>By @item.Name  /  @item.CreatedDate</p>
+                                        <p>By @item.Name  /  @item.CreatedDate.ToString("MM:dd:yyyy")</p>
                                     </div>
                                 </div> 
                               }

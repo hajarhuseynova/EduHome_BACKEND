@@ -26,7 +26,7 @@ namespace EduHome.App.Controllers
                 CourseViewModel courseViewModel = new CourseViewModel
                 {
                     Courses = await _context.Courses
-                    .Include(x => x.Feature)
+                    .Include(x => x.Feature).Where(x => !x.IsDeleted)
                      .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
                     .Include(x => x.CourseCategory).Where(x => !x.IsDeleted).Skip((page - 1) * 9).Take(9)
                     .ToListAsync(),
@@ -41,7 +41,7 @@ namespace EduHome.App.Controllers
                 CourseViewModel courseViewModel = new CourseViewModel
                 {
                     Courses = await _context.Courses
-                   .Include(x => x.Feature)
+                   .Include(x => x.Feature).Where(x => !x.IsDeleted)
                     .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
                    .Include(x => x.CourseCategory).Where(x => !x.IsDeleted&&x.CourseCategoryId==id).Skip((page - 1) * 5).Take(5)
                    .ToListAsync(),
@@ -59,12 +59,12 @@ namespace EduHome.App.Controllers
             CourseViewModel courseViewModel = new CourseViewModel
             {
                 Courses = await _context.Courses
-                       .Include(x => x.Feature)
+                       .Include(x => x.Feature).Where(x => !x.IsDeleted)
                         .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
                        .Include(x => x.CourseCategory).Where(x => !x.IsDeleted)
                        .ToListAsync(),
                 Course = await _context.Courses
-                       .Include(x => x.Feature)
+                       .Include(x => x.Feature).Where(x=>!x.IsDeleted)
                         .Include(x => x.CourseTags).ThenInclude(x => x.Tag)
                        .Include(x => x.CourseCategory).Where(x => !x.IsDeleted&&x.Id==id)
                        .FirstOrDefaultAsync(),
